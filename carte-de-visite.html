@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carte de Visite (85x55 mm) · Cabinet GeoMed · Mohamed Amine Belarbia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      padding-top: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .print-toolbar {
+      background: rgba(3, 5, 8, 0.92);
+      border-bottom: 1px solid var(--border-glass);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+    }
+
+    .toolbar-flex {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .studio-workspace {
+      flex: 1;
+      padding: 3rem 0 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.25rem;
+    }
+
+    .crop-frame {
+      position: relative;
+      padding: 16px;
+      border: 1px dashed rgba(223, 192, 122, 0.28);
+      border-radius: 18px;
+      background: rgba(10, 14, 23, 0.5);
+    }
+
+    .crop-frame::before,
+    .crop-frame::after {
+      content: "+";
+      position: absolute;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .crop-frame::before { top: 2px; left: 4px; }
+    .crop-frame::after { bottom: 2px; right: 4px; }
+
+    .print-sheet-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 2.5rem;
+      width: min(1080px, 100% - 2rem);
+      justify-items: center;
+    }
+
+    .a4-multi-grid {
+      display: none;
+      grid-template-columns: repeat(2, 85mm);
+      gap: 6mm;
+      padding: 12mm;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 28px 65px rgba(0, 0, 0, 0.75);
+    }
+
+    .a4-multi-grid .business-card-sheet {
+      width: 85mm;
+      height: 55mm;
+      border-radius: 0;
+      padding: 4.2mm 4.8mm;
+      box-shadow: none;
+      border: 0.25mm solid #94a3b8;
+    }
+
+    .a4-multi-grid .bcard-person-name { font-size: 10pt; }
+    .a4-multi-grid .bcard-person-role { font-size: 5.8pt; }
+    .a4-multi-grid .bcard-footer-contacts { font-size: 5.5pt; }
+    .a4-multi-grid .bcard-brand-word { font-size: 11.5pt; }
+    .a4-multi-grid .bcard-brand-sub { font-size: 4.2pt; }
+    .a4-multi-grid .bcard-coord-stamp { font-size: 4.5pt; }
+    .a4-multi-grid .bcard-qr-box { width: 58px; height: 58px; padding: 3px; }
+    .a4-multi-grid .bcard-domain-item { font-size: 5.2pt; padding: 2px 4px; }
+    .a4-multi-grid .bcard-verso-bottom { font-size: 4.8pt; }
+
+    body.mode-a4 .print-sheet-grid { display: none; }
+    body.mode-a4 .a4-multi-grid { display: grid; }
+
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 10mm;
+      }
+
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+
+      body::before,
+      .print-toolbar,
+      .no-print {
+        display: none !important;
+      }
+
+      .studio-workspace { padding: 0 !important; }
+
+      .print-sheet-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 85mm) !important;
+        gap: 8mm !important;
+        width: auto !important;
+      }
+
+      .crop-frame {
+        padding: 0 !important;
+        border: 0.2mm dashed #64748b !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+      }
+
+      .business-card-sheet {
+        width: 85mm !important;
+        height: 55mm !important;
+        border-radius: 0 !important;
+        padding: 4.2mm 4.8mm !important;
+        box-shadow: none !important;
+      }
+
+      .bcard-person-name { font-size: 10pt !important; }
+      .bcard-person-role { font-size: 5.8pt !important; }
+      .bcard-footer-contacts { font-size: 5.5pt !important; }
+      .bcard-brand-word { font-size: 11.5pt !important; }
+      .bcard-brand-sub { font-size: 4.2pt !important; }
+      .bcard-coord-stamp { font-size: 4.5pt !important; }
+      .bcard-qr-box { width: 58px !important; height: 58px !important; padding: 3px !important; }
+      .bcard-domain-item { font-size: 5.2pt !important; padding: 2px 4px !important; }
+      .bcard-verso-bottom { font-size: 4.8pt !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="print-toolbar">
+    <div class="container toolbar-flex">
+      <div>
+        <strong style="font-family:var(--font-display); font-size:1.05rem;">Planche Carte de Visite (85 x 55 mm) · Cabinet GeoMed</strong>
+        <span style="display:block; font-family:var(--font-mono); font-size:0.68rem; color:var(--gold);">
+          BELARBIA MOHAMED AMINE · 2 BRIGADES · 5 TOPOGRAPHES · GEOMEDZ.COM
+        </span>
+      </div>
+
+      <div style="display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center;">
+        <button type="button" id="btn-mode-hd" class="filter-btn active">Recto / Verso HD</button>
+        <button type="button" id="btn-mode-a4" class="filter-btn">Planche A4 (8 Cartes)</button>
+        <button type="button" class="filter-btn active" data-bcard-theme="obsidian">01. Obsidian &amp; Or</button>
+        <button type="button" class="filter-btn" data-bcard-theme="ivory">02. Ivoire Architecte</button>
+        <button type="button" class="filter-btn" data-bcard-theme="emerald">03. Émeraude LiDAR</button>
+        <button type="button" onclick="window.print()" class="btn btn-gold">
+          <span>Imprimer / PDF 300 DPI</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="studio-workspace">
+    <div class="print-sheet-grid" id="studio-pair">
+      <div>
+        <div class="visual-pill-code no-print" style="text-align:center; margin-bottom:0.5rem;">RECTO · 85 x 55 MM</div>
+        <div class="crop-frame">
+          <article class="business-card-sheet">
+            <svg class="bcard-topo-svg" viewBox="0 0 420 270" fill="none" aria-hidden="true">
+              <path d="M240,-20 C310,40 320,160 440,220" stroke="#DFC07A" stroke-width="1"/>
+              <path d="M270,-30 C340,35 350,145 450,200" stroke="#DFC07A" stroke-width="1.2"/>
+              <path d="M300,-40 C370,30 380,130 460,180" stroke="#38BDF8" stroke-width="1"/>
+              <circle cx="355" cy="95" r="55" stroke="#DFC07A" stroke-width="0.7" stroke-dasharray="2 4"/>
+              <circle cx="355" cy="95" r="32" stroke="#38BDF8" stroke-width="0.7"/>
+            </svg>
+
+            <div class="bcard-layer">
+              <div class="bcard-head">
+                <div class="bcard-brand-row">
+                  <svg width="34" height="34" viewBox="0 0 64 64" fill="none">
+                    <circle cx="32" cy="32" r="26" stroke="#DFC07A" stroke-width="1.5" stroke-dasharray="2 3"/>
+                    <polygon points="32,12 49,22 49,42 32,52 15,42 15,22" stroke="#DFC07A" stroke-width="2" fill="rgba(223,192,122,0.1)"/>
+                    <circle cx="32" cy="32" r="4.5" fill="#38BDF8"/>
+                  </svg>
+                  <div>
+                    <div class="bcard-brand-word">GEO<span>MED</span></div>
+                    <div class="bcard-brand-sub">LIDAR 3D · GNSS · TOPOGRAPHIE</div>
+                  </div>
+                </div>
+                <div class="bcard-coord-stamp">
+                  16 ANS D'ACTIVITÉ<br>2 BRIGADES · 5 TOPOGRAPHES
+                </div>
+              </div>
+
+              <div class="bcard-identity-center">
+                <div class="bcard-person-name">Belarbia Mohamed Amine</div>
+                <div class="bcard-person-role">Ingénieur Géomètre-Topographe &amp; Métreur</div>
+              </div>
+
+              <div class="bcard-footer-contacts">
+                <div class="bcard-c-line">
+                  <span style="color:var(--gold);">TEL</span>
+                  <span>06 61 43 11 74 / 05 58 42 62 57</span>
+                </div>
+                <div class="bcard-c-line">
+                  <span style="color:var(--gold);">WEB</span>
+                  <span>geomedz.com · belarbia.85@gmail.com</span>
+                </div>
+                <div class="bcard-c-line full-span">
+                  <span style="color:var(--gold);">SIÈGE</span>
+                  <span>N° 15 Cité 50 Logts Ben Zerdjeb, Misserghine · Oran</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div>
+        <div class="visual-pill-code no-print" style="text-align:center; margin-bottom:0.5rem;">VERSO · 85 x 55 MM</div>
+        <div class="crop-frame">
+          <article class="business-card-sheet">
+            <svg class="bcard-topo-svg" viewBox="0 0 420 270" fill="none" aria-hidden="true">
+              <path d="M-20,60 C80,110 140,210 260,290" stroke="#DFC07A" stroke-width="1"/>
+              <path d="M-30,100 C70,150 120,230 230,300" stroke="#38BDF8" stroke-width="1"/>
+            </svg>
+
+            <div class="bcard-layer">
+              <div class="bcard-head">
+                <div>
+                  <div class="bcard-brand-word" style="font-size:1.05rem;">GEO<span>MED</span> · ALGÉRIE</div>
+                  <div class="bcard-brand-sub">ORAN · ALGER · BLIDA · TLEMCEN · TIARET · SUD ALGÉRIEN</div>
+                </div>
+                <span style="font-family:var(--font-mono); font-size:0.52rem; color:var(--cyan);">GEOMEDZ.COM</span>
+              </div>
+
+              <div class="bcard-verso-body">
+                <div class="bcard-domains-grid">
+                  <div class="bcard-domain-item"><span>Bornage &amp; Foncier</span></div>
+                  <div class="bcard-domain-item"><span>LiDAR 3D &amp; GNSS</span></div>
+                  <div class="bcard-domain-item"><span>Travaux Topographiques</span></div>
+                  <div class="bcard-domain-item"><span>EDD Copropriété</span></div>
+                  <div class="bcard-domain-item"><span>Morcellement &amp; Lots</span></div>
+                  <div class="bcard-domain-item"><span>Études &amp; Suivis VRD</span></div>
+                </div>
+
+                <div class="bcard-qr-box js-geomed-qr"></div>
+              </div>
+
+              <div class="bcard-verso-bottom">
+                <span>FIAT · SONATRACH · SONELGAZ · SHERATON · AZ HÔTELS</span>
+                <span>06 61 43 11 74</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="a4-multi-grid" id="a4-sheet-container"></div>
+  </main>
+
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const studioCards = document.querySelectorAll('#studio-pair .business-card-sheet');
+      const a4Container = document.getElementById('a4-sheet-container');
+      if (studioCards.length === 2 && a4Container) {
+        for (let i = 0; i < 4; i++) {
+          a4Container.appendChild(studioCards[0].cloneNode(true));
+          a4Container.appendChild(studioCards[1].cloneNode(true));
+        }
+      }
+
+      const btnHd = document.getElementById('btn-mode-hd');
+      const btnA4 = document.getElementById('btn-mode-a4');
+
+      btnHd?.addEventListener('click', () => {
+        document.body.classList.remove('mode-a4');
+        btnHd.classList.add('active');
+        btnA4?.classList.remove('active');
+      });
+
+      btnA4?.addEventListener('click', () => {
+        document.body.classList.add('mode-a4');
+        btnA4.classList.add('active');
+        btnHd?.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>

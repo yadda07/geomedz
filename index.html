@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeoMed · Bureau d'Études Topographiques, LiDAR 3D & Géodésie GNSS à Oran | geomedz.com</title>
+  <meta name="description" content="Cabinet GeoMed à Oran : bureau d'études topographiques, relevés LiDAR 3D, géodésie GNSS RTK/PPK, bornage, EDD, morcellement et études VRD. 16 ans d'expérience, 2 brigades et 5 topographes intervenant à Oran, Alger, Blida, Tlemcen, Aïn Témouchent, Relizane, Tiaret et dans le Sud algérien.">
+  <link rel="canonical" href="https://geomedz.com/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="brand-lockup" aria-label="GeoMed · Bureau d'Études Topographiques à Oran">
+        <svg class="brand-mark-svg" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <circle cx="32" cy="32" r="28" stroke="#DFC07A" stroke-width="1.2" opacity="0.45"/>
+          <circle cx="32" cy="32" r="22" stroke="#DFC07A" stroke-width="1" stroke-dasharray="2 3" opacity="0.75"/>
+          <polygon points="32,12 49,22 49,42 32,52 15,42 15,22" stroke="#DFC07A" stroke-width="1.8" fill="rgba(223,192,122,0.08)"/>
+          <line x1="32" y1="4" x2="32" y2="12" stroke="#F5DEB3" stroke-width="1.8"/>
+          <line x1="32" y1="52" x2="32" y2="60" stroke="#F5DEB3" stroke-width="1.8"/>
+          <line x1="4" y1="32" x2="12" y2="32" stroke="#F5DEB3" stroke-width="1.8"/>
+          <line x1="52" y1="32" x2="60" y2="32" stroke="#F5DEB3" stroke-width="1.8"/>
+          <circle cx="32" cy="32" r="5" fill="#030508" stroke="#38BDF8" stroke-width="2"/>
+          <circle cx="32" cy="32" r="2" fill="#F5DEB3"/>
+        </svg>
+        <div>
+          <div class="brand-title">GEO<span>MED</span></div>
+          <span class="brand-sub">BUREAU TOPOGRAPHIQUE · ORAN</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" aria-label="Navigation principale">
+        <a href="#territoire" class="nav-link">Couverture &amp; Brigades</a>
+        <a href="#lidar-gnss" class="nav-link">LiDAR &amp; GNSS</a>
+        <a href="#services" class="nav-link">Prestations</a>
+        <a href="#references" class="nav-link">Références</a>
+        <a href="#qualifier" class="nav-link">Qualifier un dossier</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="live-pill">
+          <span class="live-dot"></span>
+          <span>2 BRIGADES · 5 TOPOGRAPHES</span>
+        </div>
+        <a href="tel:+213661431174" class="btn btn-gold">
+          <span>06 61 43 11 74</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-top-center">
+          <div class="hero-badge">
+            <span>CABINET GEOMED · WGS84 / UTM ZONE 30N · 35°41'N · 0°38'W · ORAN</span>
+          </div>
+
+          <h1 class="hero-display-title">
+            Topographie de précision,<br>
+            <span class="grad-gold">relevés LiDAR 3D et géodésie GNSS.</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Basé à Oran, le bureau d'études topographiques <strong>GeoMed</strong> mobilise <strong>2 brigades autonomes et 5 topographes</strong> sur le territoire national (Oran, Alger, Blida, Tlemcen, Aïn Témouchent, Relizane, Tiaret et le Sud algérien) au service des chantiers industriels, énergétiques, hôteliers et immobiliers.
+          </p>
+
+          <div class="hero-cta-row">
+            <a href="#qualifier" class="btn btn-gold">
+              <span>Qualifier un dossier</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#services" class="btn btn-glass">
+              <span>Catalogue des 6 pôles</span>
+            </a>
+            <a href="tel:+213661431174" class="btn btn-cyan">
+              <span>06 61 43 11 74</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-stage-frame">
+          <div class="stage-toolbar">
+            <div class="stage-dots">
+              <i style="background:#fb7185;"></i>
+              <i style="background:#dfc07a;"></i>
+              <i style="background:#34d399;"></i>
+              <span style="margin-left:0.5rem;">GEOMED · CHAÎNE MÉTROLOGIQUE LIDAR · GNSS RTK · STATION 1"</span>
+            </div>
+
+            <div class="mode-switcher" role="tablist" aria-label="Modes de visualisation géodésique">
+              <button type="button" class="mode-btn active" data-console-mode="mnt3d">01. MNT 3D Isométrique</button>
+              <button type="button" class="mode-btn" data-console-mode="lidar">02. Nuage de Points LiDAR</button>
+              <button type="button" class="mode-btn" data-console-mode="cad">03. Courbes &amp; Polygonation</button>
+            </div>
+          </div>
+
+          <div class="stage-canvas-wrap">
+            <canvas id="topo-canvas" aria-label="Visualiseur interactif 3D MNT, LiDAR et Courbes de niveau"></canvas>
+
+            <div class="stage-hud-overlay">
+              <div class="stage-hud-top">
+                <div class="hud-glass-chip">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/><line x1="12" y1="1" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+                  <span id="hud-utm-coords">E 708420.00 · N 3948650.00</span>
+                </div>
+                <div class="hud-glass-chip" style="color:var(--emerald);">
+                  <span>● 2 BRIGADES · 5 TOPOGRAPHES</span>
+                </div>
+              </div>
+
+              <div class="stage-hud-top" style="align-items:flex-end;">
+                <div class="hud-glass-chip">
+                  <span>ALTIMÉTRIE : <strong id="hud-alt-val" style="color:#fff;">+118.45 m NGA</strong></span>
+                </div>
+                <div class="hud-glass-chip">
+                  <span>GISEMENT : <strong id="hud-azimuth-val" style="color:#fff;">142.850 gon</strong> · <strong id="hud-dist-val" style="color:var(--cyan);">248.60 m</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="stage-telemetry-bar">
+            <div class="tele-box">
+              <svg class="tele-icon-svg" viewBox="0 0 36 36" fill="none">
+                <circle cx="18" cy="18" r="15" stroke="#DFC07A" stroke-width="1.5" opacity="0.4"/>
+                <path d="M10 22L16 14L21 19L27 11" stroke="#DFC07A" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="27" cy="11" r="2.5" fill="#38BDF8"/>
+              </svg>
+              <div class="tele-meta">
+                <small>Exercice professionnel</small>
+                <strong>16 ans d'activité</strong>
+              </div>
+            </div>
+
+            <div class="tele-box">
+              <svg class="tele-icon-svg" viewBox="0 0 36 36" fill="none">
+                <rect x="4" y="8" width="12" height="20" rx="3" stroke="#38BDF8" stroke-width="1.6"/>
+                <rect x="20" y="8" width="12" height="20" rx="3" stroke="#DFC07A" stroke-width="1.6"/>
+                <circle cx="10" cy="14" r="2" fill="#38BDF8"/>
+                <circle cx="26" cy="14" r="2" fill="#DFC07A"/>
+              </svg>
+              <div class="tele-meta">
+                <small>Effectif terrain &amp; bureau</small>
+                <strong>2 brigades · 5 topographes</strong>
+              </div>
+            </div>
+
+            <div class="tele-box">
+              <svg class="tele-icon-svg" viewBox="0 0 36 36" fill="none">
+                <path d="M6 18H30M18 6V30" stroke="#34D399" stroke-width="1.4" stroke-dasharray="2 2"/>
+                <circle cx="18" cy="18" r="8" stroke="#DFC07A" stroke-width="1.6"/>
+                <circle cx="18" cy="18" r="2.5" fill="#34D399"/>
+              </svg>
+              <div class="tele-meta">
+                <small>Métrologie</small>
+                <strong>LiDAR 3D · GNSS RTK/PPK</strong>
+              </div>
+            </div>
+
+            <div class="tele-box">
+              <svg class="tele-icon-svg" viewBox="0 0 36 36" fill="none">
+                <polygon points="18,4 32,12 32,24 18,32 4,24 4,12" stroke="#DFC07A" stroke-width="1.6"/>
+                <circle cx="18" cy="18" r="3" fill="#38BDF8"/>
+              </svg>
+              <div class="tele-meta">
+                <small>Couverture</small>
+                <strong>Nord, Hauts-Plateaux &amp; Sud</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="territoire" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-eyebrow">Couverture Nationale · Capacité Opérationnelle</span>
+          <h2 class="section-title">Interventions multi-wilayas et brigades autonomes</h2>
+          <p class="section-sub">
+            Depuis son siège d'Oran (Misserghine), GeoMed intervient sur les chantiers du Nord, des Hauts-Plateaux et du Sud algérien avec deux brigades équipées.
+          </p>
+        </div>
+
+        <div class="apple-bento-asymmetric">
+          <article class="bento-feature-box scroll-reveal">
+            <div class="visual-card-top-meta">
+              <span class="visual-pill-code">RÉSEAU D'INTERVENTION · ALGÉRIE</span>
+              <span class="visual-pill-spec">MOBILITÉ NATIONALE</span>
+            </div>
+
+            <h3 class="visual-card-title" style="font-size:1.5rem;">Oran, Alger, Blida, Tlemcen, Aïn Témouchent, Relizane, Tiaret et Sud algérien</h3>
+
+            <div class="algeria-map-stage">
+              <svg viewBox="0 0 720 340" fill="none" aria-label="Carte vectorielle des interventions GeoMed en Algérie">
+                <defs>
+                  <radialGradient id="oranGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#DFC07A" stop-opacity="0.55"/>
+                    <stop offset="100%" stop-color="#DFC07A" stop-opacity="0"/>
+                  </radialGradient>
+                  <linearGradient id="beamGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#DFC07A"/>
+                    <stop offset="100%" stop-color="#38BDF8"/>
+                  </linearGradient>
+                </defs>
+
+                <g stroke="rgba(255,255,255,0.05)" stroke-width="1">
+                  <line x1="0" y1="60" x2="720" y2="60"/>
+                  <line x1="0" y1="130" x2="720" y2="130"/>
+                  <line x1="0" y1="200" x2="720" y2="200"/>
+                  <line x1="0" y1="270" x2="720" y2="270"/>
+                  <line x1="140" y1="0" x2="140" y2="340"/>
+                  <line x1="280" y1="0" x2="280" y2="340"/>
+                  <line x1="420" y1="0" x2="420" y2="340"/>
+                  <line x1="560" y1="0" x2="560" y2="340"/>
+                </g>
+
+                <path d="M105,82 L155,68 L225,52 L310,44 L395,38 L465,42 L485,88 L525,165 L555,245 L430,318 L285,326 L160,265 L75,185 L88,125 Z"
+                      fill="rgba(223,192,122,0.04)" stroke="rgba(223,192,122,0.35)" stroke-width="1.5"/>
+
+                <path d="M140,210 Q280,185 470,220" stroke="rgba(56,189,248,0.18)" stroke-width="1.2" stroke-dasharray="4 4"/>
+                <path d="M175,255 Q310,230 500,260" stroke="rgba(56,189,248,0.18)" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+                <g stroke="url(#beamGrad)" stroke-width="1.4" opacity="0.78">
+                  <line x1="210" y1="66" x2="145" y2="92"/>
+                  <line x1="210" y1="66" x2="175" y2="78"/>
+                  <line x1="210" y1="66" x2="255" y2="78"/>
+                  <line x1="210" y1="66" x2="285" y2="102"/>
+                  <line x1="210" y1="66" x2="348" y2="62"/>
+                  <line x1="210" y1="66" x2="368" y2="48"/>
+                  <line x1="210" y1="66" x2="275" y2="235" stroke-dasharray="5 4"/>
+                  <line x1="368" y1="48" x2="425" y2="215" stroke-dasharray="5 4"/>
+                  <line x1="275" y1="235" x2="425" y2="215" stroke-dasharray="3 3"/>
+                </g>
+
+                <circle cx="210" cy="66" r="28" fill="url(#oranGlow)"/>
+                <circle cx="210" cy="66" r="11" stroke="#DFC07A" stroke-width="1.5"/>
+                <circle cx="210" cy="66" r="4.5" fill="#F5DEB3"/>
+                <text x="195" y="42" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="11" fill="#F5DEB3">★ ORAN (SIÈGE)</text>
+
+                <circle cx="145" cy="92" r="4" fill="#DFC07A"/>
+                <text x="78" y="96" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#CBD5E1">TLEMCEN</text>
+
+                <circle cx="175" cy="78" r="3.5" fill="#DFC07A"/>
+                <text x="68" y="75" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94A3B8">AÏN TÉMOUCHENT</text>
+
+                <circle cx="255" cy="78" r="3.5" fill="#DFC07A"/>
+                <text x="242" y="96" font-family="'JetBrains Mono', monospace" font-size="9" fill="#CBD5E1">RELIZANE</text>
+
+                <circle cx="285" cy="102" r="4" fill="#DFC07A"/>
+                <text x="296" y="106" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#CBD5E1">TIARET</text>
+
+                <circle cx="348" cy="62" r="4" fill="#DFC07A"/>
+                <text x="335" y="80" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#CBD5E1">BLIDA</text>
+
+                <circle cx="368" cy="48" r="5" fill="#34D399"/>
+                <circle cx="368" cy="48" r="9" stroke="#34D399" stroke-width="1.2"/>
+                <text x="382" y="52" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="10.5" fill="#34D399">ALGER</text>
+
+                <g>
+                  <circle cx="275" cy="235" r="5" fill="#38BDF8"/>
+                  <circle cx="275" cy="235" r="10" stroke="#38BDF8" stroke-width="1.2" stroke-dasharray="2 2"/>
+                  <circle cx="425" cy="215" r="5" fill="#38BDF8"/>
+                  <circle cx="425" cy="215" r="10" stroke="#38BDF8" stroke-width="1.2" stroke-dasharray="2 2"/>
+                  <rect x="245" y="254" width="220" height="26" rx="6" fill="rgba(3,5,8,0.85)" stroke="rgba(56,189,248,0.4)"/>
+                  <text x="355" y="271" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="9.5" fill="#38BDF8">SUD ALGÉRIEN · SITES SAHARIENS</text>
+                </g>
+              </svg>
+            </div>
+
+            <div class="wilaya-pills-strip">
+              <span class="wilaya-pill hq"><i></i>Oran (Siège)</span>
+              <span class="wilaya-pill"><i></i>Alger</span>
+              <span class="wilaya-pill"><i></i>Blida</span>
+              <span class="wilaya-pill"><i></i>Tlemcen</span>
+              <span class="wilaya-pill"><i></i>Aïn Témouchent</span>
+              <span class="wilaya-pill"><i></i>Relizane</span>
+              <span class="wilaya-pill"><i></i>Tiaret</span>
+              <span class="wilaya-pill sahara"><i></i>Sud Algérien</span>
+            </div>
+          </article>
+
+          <article class="bento-feature-box scroll-reveal">
+            <div>
+              <div class="visual-card-top-meta">
+                <span class="visual-pill-code">ORGANISATION GEOMED</span>
+                <span class="visual-pill-spec">CHANTIERS SIMULTANÉS</span>
+              </div>
+              <div class="big-apple-stat" style="margin-block:0.35rem;">2 Brigades · 5 Topographes</div>
+              <p class="visual-card-caption">
+                Le cabinet GeoMed est dirigé par <strong>Mohamed Amine Belarbia</strong> (géomètre-topographe et métreur, 16 ans d'expérience) et s'appuie sur deux brigades autonomes terrain et DAO.
+              </p>
+            </div>
+
+            <div class="svg-diagram-stage" style="height:215px; margin-block:0.75rem;">
+              <svg viewBox="0 0 360 200" fill="none" aria-label="Organigramme technique GeoMed : 2 brigades et 5 topographes">
+                <rect x="85" y="12" width="190" height="38" rx="8" fill="rgba(223,192,122,0.14)" stroke="#DFC07A" stroke-width="1.5"/>
+                <text x="180" y="29" text-anchor="middle" font-family="'Syne', sans-serif" font-weight="800" font-size="10.5" fill="#F8FAFC">CABINET GEOMED · DIRECTION</text>
+                <text x="180" y="42" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" fill="#DFC07A">M. BELARBIA · 16 ANS D'EXPÉRIENCE</text>
+
+                <path d="M180,50 L180,68 M95,68 L265,68 M95,68 L95,84 M265,68 L265,84" stroke="#DFC07A" stroke-width="1.4"/>
+
+                <rect x="24" y="84" width="142" height="44" rx="8" fill="rgba(56,189,248,0.1)" stroke="#38BDF8" stroke-width="1.3"/>
+                <text x="95" y="102" text-anchor="middle" font-family="'Syne', sans-serif" font-weight="800" font-size="10" fill="#38BDF8">BRIGADE 01</text>
+                <text x="95" y="117" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" fill="#CBD5E1">LiDAR 3D · Station 1"</text>
+
+                <rect x="194" y="84" width="142" height="44" rx="8" fill="rgba(52,211,153,0.1)" stroke="#34D399" stroke-width="1.3"/>
+                <text x="265" y="102" text-anchor="middle" font-family="'Syne', sans-serif" font-weight="800" font-size="10" fill="#34D399">BRIGADE 02</text>
+                <text x="265" y="117" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" fill="#CBD5E1">GNSS RTK/PPK · VRD</text>
+
+                <g transform="translate(0, 148)">
+                  <circle cx="52" cy="18" r="14" fill="#0A0E17" stroke="#DFC07A" stroke-width="1.5"/>
+                  <text x="52" y="21" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#F5DEB3">T1</text>
+
+                  <circle cx="116" cy="18" r="14" fill="#0A0E17" stroke="#38BDF8" stroke-width="1.5"/>
+                  <text x="116" y="21" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#38BDF8">T2</text>
+
+                  <circle cx="180" cy="18" r="14" fill="#0A0E17" stroke="#38BDF8" stroke-width="1.5"/>
+                  <text x="180" y="21" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#38BDF8">T3</text>
+
+                  <circle cx="244" cy="18" r="14" fill="#0A0E17" stroke="#34D399" stroke-width="1.5"/>
+                  <text x="244" y="21" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#34D399">T4</text>
+
+                  <circle cx="308" cy="18" r="14" fill="#0A0E17" stroke="#34D399" stroke-width="1.5"/>
+                  <text x="308" y="21" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#34D399">T5</text>
+
+                  <text x="180" y="46" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#94A3B8">5 TOPOGRAPHES · ACQUISITION TERRAIN &amp; TRAITEMENT DAO</text>
+                </g>
+              </svg>
+            </div>
+
+            <div class="visual-micro-tags">
+              <span>Intervention 58 Wilayas</span>
+              <span>Double Brigade Terrain</span>
+              <span>DAO AutoCAD · Covadis · SIG</span>
+            </div>
+          </article>
+        </div>
+
+        <div id="lidar-gnss" class="apple-bento-3col">
+          <article class="visual-card scroll-reveal">
+            <div class="svg-diagram-stage">
+              <svg viewBox="0 0 320 170" fill="none" aria-label="Schéma SVG Scanner LiDAR 3D">
+                <circle cx="52" cy="128" r="8" fill="#0A0E17" stroke="#DFC07A" stroke-width="2"/>
+                <line x1="52" y1="136" x2="38" y2="162" stroke="#DFC07A" stroke-width="1.8"/>
+                <line x1="52" y1="136" x2="66" y2="162" stroke="#DFC07A" stroke-width="1.8"/>
+                <line x1="52" y1="136" x2="52" y2="164" stroke="#DFC07A" stroke-width="1.8"/>
+                <polygon points="52,128 275,24 275,148" fill="rgba(56,189,248,0.1)"/>
+                <line x1="52" y1="128" x2="275" y2="28" stroke="#38BDF8" stroke-width="1.2" stroke-dasharray="3 3"/>
+                <line x1="52" y1="128" x2="275" y2="68" stroke="#38BDF8" stroke-width="1.2" stroke-dasharray="3 3"/>
+                <line x1="52" y1="128" x2="275" y2="108" stroke="#38BDF8" stroke-width="1.2" stroke-dasharray="3 3"/>
+                <line x1="52" y1="128" x2="275" y2="146" stroke="#38BDF8" stroke-width="1.2" stroke-dasharray="3 3"/>
+                <polygon points="215,44 275,26 275,134 215,150 175,126 175,64" stroke="#DFC07A" stroke-width="1.5" fill="rgba(223,192,122,0.08)"/>
+                <g fill="#38BDF8">
+                  <circle cx="215" cy="44" r="2.5"/><circle cx="245" cy="35" r="2.5"/><circle cx="275" cy="26" r="2.5"/>
+                  <circle cx="195" cy="75" r="2.2"/><circle cx="225" cy="68" r="2.2"/><circle cx="255" cy="60" r="2.2"/>
+                  <circle cx="195" cy="105" r="2.2"/><circle cx="225" cy="98" r="2.2"/><circle cx="255" cy="92" r="2.2"/>
+                  <circle cx="215" cy="132" r="2.5"/><circle cx="248" cy="122" r="2.5"/><circle cx="275" cy="134" r="2.5"/>
+                </g>
+                <text x="16" y="24" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#38BDF8">SCANNER LIDAR 3D · NUAGE XYZ</text>
+              </svg>
+            </div>
+            <div>
+              <div class="visual-card-top-meta">
+                <span class="visual-pill-code">MÉTROLOGIE · 01</span>
+                <span class="visual-pill-spec">NUAGE 3D</span>
+              </div>
+              <h3 class="visual-card-title">Relevés LiDAR 3D</h3>
+              <p class="visual-card-caption">Acquisition de nuages de points haute densité pour sites industriels, ouvrages d'art et bâtiments complexes.</p>
+            </div>
+          </article>
+
+          <article class="visual-card scroll-reveal">
+            <div class="svg-diagram-stage">
+              <svg viewBox="0 0 320 170" fill="none" aria-label="Schéma SVG Géodésie Satellitaire GNSS RTK">
+                <path d="M20,56 Q160,-10 300,56" stroke="rgba(223,192,122,0.4)" stroke-width="1.2" stroke-dasharray="4 4"/>
+                <g stroke="#DFC07A" stroke-width="1.5" fill="#0A0E17">
+                  <rect x="58" y="28" width="16" height="10" rx="2"/>
+                  <rect x="152" y="12" width="16" height="10" rx="2"/>
+                  <rect x="246" y="28" width="16" height="10" rx="2"/>
+                </g>
+                <line x1="66" y1="38" x2="115" y2="120" stroke="#34D399" stroke-width="1.2" stroke-dasharray="3 3"/>
+                <line x1="160" y1="22" x2="115" y2="120" stroke="#34D399" stroke-width="1.2" stroke-dasharray="3 3"/>
+                <line x1="160" y1="22" x2="215" y2="115" stroke="#38BDF8" stroke-width="1.2" stroke-dasharray="3 3"/>
+                <line x1="254" y1="38" x2="215" y2="115" stroke="#38BDF8" stroke-width="1.2" stroke-dasharray="3 3"/>
+                <path d="M115,120 Q165,98 215,115" stroke="#DFC07A" stroke-width="1.6"/>
+                <circle cx="115" cy="120" r="6" fill="#34D399"/>
+                <line x1="115" y1="126" x2="115" y2="156" stroke="#CBD5E1" stroke-width="2"/>
+                <circle cx="215" cy="115" r="6" fill="#38BDF8"/>
+                <line x1="215" y1="121" x2="215" y2="156" stroke="#CBD5E1" stroke-width="2"/>
+                <text x="78" y="165" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#34D399">BASE FIXE</text>
+                <text x="188" y="165" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#38BDF8">ROVER RTK</text>
+              </svg>
+            </div>
+            <div>
+              <div class="visual-card-top-meta">
+                <span class="visual-pill-code">MÉTROLOGIE · 02</span>
+                <span class="visual-pill-spec">RTK &amp; PPK</span>
+              </div>
+              <h3 class="visual-card-title">Géodésie GNSS Bi-Fréquence</h3>
+              <p class="visual-card-caption">Canevas géodésiques, rattachement WGS84 / UTM et levés centimétriques en mode RTK et post-traitement PPK.</p>
+            </div>
+          </article>
+
+          <article class="visual-card scroll-reveal">
+            <div class="svg-diagram-stage">
+              <svg viewBox="0 0 320 170" fill="none" aria-label="Schéma SVG Station Totale Robotisée 1 seconde">
+                <circle cx="160" cy="85" r="58" stroke="rgba(223,192,122,0.35)" stroke-width="1.2"/>
+                <circle cx="160" cy="85" r="44" stroke="#DFC07A" stroke-width="1.4" stroke-dasharray="2 5"/>
+                <circle cx="160" cy="85" r="24" stroke="#38BDF8" stroke-width="1.2"/>
+                <line x1="88" y1="85" x2="232" y2="85" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+                <line x1="160" y1="15" x2="160" y2="155" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+                <polygon points="160,68 175,85 160,102 145,85" stroke="#34D399" stroke-width="1.8" fill="rgba(52,211,153,0.14)"/>
+                <circle cx="160" cy="85" r="3.5" fill="#F5DEB3"/>
+                <text x="16" y="24" font-family="'JetBrains Mono', monospace" font-size="9" fill="#DFC07A">STATION TOTALE 1"</text>
+                <text x="215" y="156" font-family="'JetBrains Mono', monospace" font-size="9" fill="#34D399">± 1.5 mm</text>
+              </svg>
+            </div>
+            <div>
+              <div class="visual-card-top-meta">
+                <span class="visual-pill-code">MÉTROLOGIE · 03</span>
+                <span class="visual-pill-spec">± 1.5 MM</span>
+              </div>
+              <h3 class="visual-card-title">Station Totale 1" &amp; Nivellement</h3>
+              <p class="visual-card-caption">Implantations industrielles de haute précision, contrôle géométrique d'ouvrages et nivellement rattaché NGA.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-eyebrow">Pôles d'Intervention du Cabinet GeoMed</span>
+          <h2 class="section-title">Prestations topographiques, foncières et VRD</h2>
+          <p class="section-sub">
+            Dossiers techniques et plans normalisés destinés aux entreprises, maîtres d'ouvrage, bureaux d'études, notaires et administrations.
+          </p>
+        </div>
+
+        <div class="visual-bento-grid">
+          <article class="visual-card scroll-reveal">
+            <div class="svg-diagram-stage">
+              <svg viewBox="0 0 320 175" fill="none" aria-label="Schéma SVG Bornage et délimitation foncière">
+                <polygon points="68,42 242,32 268,128 84,142" fill="rgba(223,192,122,0.08)" stroke="#DFC07A" stroke-width="2"/>
+                <line x1="68" y1="42" x2="268" y2="128" stroke="rgba(56,189,248,0.35)" stroke-width="1.2" stroke-dasharray="4 4"/>
+                <g fill="#030508" stroke="#38BDF8" stroke-width="2.2">
+                  <rect x="61" y="35" width="14" height="14" rx="3"/>
+                  <rect x="235" y="25" width="14" height="14" rx="3"/>
+                  <rect x="261" y="121" width="14" height="14" rx="3"/>
+                  <rect x="77" y="135" width="14" height="14" rx="3"/>
+                </g>
+                <text x="42" y="30" font-family="'JetBrains Mono', monospace" font-size="9" fill="#38BDF8">B1</text>
+                <text x="254" y="24" font-family="'JetBrains Mono', monospace" font-size="9" fill="#38BDF8">B2</text>
+                <text x="280" y="134" font-family="'JetBrains Mono', monospace" font-size="9" fill="#38BDF8">B3</text>
+                <text x="55" y="152" font-family="'JetBrains Mono', monospace" font-size="9" fill="#38BDF8">B4</text>
+                <text x="155" y="26" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#F5DEB3">L = 48.50 m</text>
+                <text x="172" y="96" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="11" fill="#FFFFFF">S = 2 450 m²</text>
+              </svg>
+            </div>
+            <div>
+              <div class="visual-card-top-meta">
+                <span class="visual-pill-code">M-01 · FONCIER</span>
+                <span class="visual-pill-spec">PV &amp; PLAN</span>
+              </div>
+              <h3 class="visual-card-title">Bornage &amp; Délimitation</h3>
+              <p class="visual-card-caption">Délimitation contradictoire des propriétés, matérialisation des bornes, vérification des contenances et enquêtes foncières.</p>
+              <div class="visual-micro-tags">
+                <span>Plan de bornage</span>
+                <span>Procès-verbal</span>
+                <span>Cadastre &amp; Livret</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="visual-card scroll-reveal">
+            <div class="svg-diagram-stage">
+              <svg viewBox="0 0 320 175" fill="none" aria-label="Schéma SVG Travaux Topographiques et Courbes de niveau">
+                <ellipse cx="165" cy="92" rx="118" ry="58" stroke="rgba(223,192,122,0.25)" stroke-width="1.2"/>
+                <ellipse cx="165" cy="92" rx="88" ry="42" stroke="rgba(223,192,122,0.45)" stroke-width="1.4"/>
+                <ellipse cx="165" cy="92" rx="56" ry="26" stroke="#DFC07A" stroke-width="1.6"/>
+                <ellipse cx="165" cy="92" rx="24" ry="11" stroke="#38BDF8" stroke-width="1.6" fill="rgba(56,189,248,0.12)"/>
+                <text x="165" y="95" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#38BDF8">+140m</text>
+                <text x="232" y="72" font-family="'JetBrains Mono', monospace" font-size="8" fill="#F5DEB3">+120m</text>
+                <text x="262" y="52" font-family="'JetBrains Mono', monospace" font-size="8" fill="#94A3B8">+100m</text>
+              </svg>
+            </div>
+            <div>
+              <div class="visual-card-top-meta">
+                <span class="visual-pill-code">M-02 · TOPOMÉTRIE</span>
+                <span class="visual-pill-spec">MNT 3D</span>
+              </div>
+              <h3 class="visual-card-title">Travaux Topographiques</h3>
+              <p class="visual-card-caption">Levés réguliers aux échelles 1/100 à 1/5000, modèles numériques de terrain, implantations d'ouvrages et calculs de cubatures.</p>
+              <div class="visual-micro-tags">
+                <span>DWG / DXF / PDF</span>
+                <span>Implantation</span>
+                <span>Cubatures</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="visual-card scroll-reveal">
+            <div class="svg-diagram-stage">
+              <svg viewBox="0 0 320 175" fill="none" aria-label="Schéma SVG État Descriptif de Division EDD">
+                <rect x="48" y="24" width="224" height="126" rx="4" stroke="#F8FAFC" stroke-width="1.8" fill="rgba(15,23,42,0.8)"/>
+                <rect x="54" y="30" width="102" height="68" fill="rgba(223,192,122,0.16)" stroke="#DFC07A" stroke-width="1.3"/>
+                <text x="105" y="62" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="9.5" fill="#F5DEB3">LOT 01</text>
+                <text x="105" y="76" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" fill="#CBD5E1">142 m² · 240/1000</text>
+                <rect x="162" y="30" width="104" height="68" fill="rgba(56,189,248,0.14)" stroke="#38BDF8" stroke-width="1.3"/>
+                <text x="214" y="62" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="9.5" fill="#38BDF8">LOT 02</text>
+                <text x="214" y="76" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" fill="#CBD5E1">148 m² · 250/1000</text>
+                <rect x="54" y="104" width="212" height="40" fill="rgba(52,211,153,0.12)" stroke="#34D399" stroke-width="1.2" stroke-dasharray="3 3"/>
+                <text x="160" y="128" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#34D399">PARTIES COMMUNES &amp; CIRCULATION</text>
+              </svg>
+            </div>
+            <div>
+              <div class="visual-card-top-meta">
+                <span class="visual-pill-code">M-03 · COPROPRIÉTÉ</span>
+                <span class="visual-pill-spec">NOTARIAT</span>
+              </div>
+              <h3 class="visual-card-title">EDD (État Descriptif de Division)</h3>
+              <p class="visual-card-caption">Constitution des dossiers EDD pour promotions immobilières et immeubles : plans par niveau, tableau des surfaces et quotes-parts.</p>
+              <div class="visual-micro-tags">
+                <span>Quotes-parts</span>
+                <span>Plans de niveaux</span>
+                <span>Copropriété</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="visual-card scroll-reveal">
+            <div class="svg-diagram-stage">
+              <svg viewBox="0 0 320 175" fill="none" aria-label="Schéma SVG État des lieux et relevé de façade">
+                <rect x="86" y="32" width="148" height="116" stroke="#DFC07A" stroke-width="1.8" fill="rgba(223,192,122,0.06)"/>
+                <line x1="86" y1="70" x2="234" y2="70" stroke="rgba(223,192,122,0.4)" stroke-width="1"/>
+                <line x1="86" y1="108" x2="234" y2="108" stroke="rgba(223,192,122,0.4)" stroke-width="1"/>
+                <line x1="160" y1="32" x2="160" y2="148" stroke="rgba(223,192,122,0.4)" stroke-width="1"/>
+                <line x1="58" y1="32" x2="58" y2="148" stroke="#38BDF8" stroke-width="1.4"/>
+                <line x1="52" y1="32" x2="64" y2="32" stroke="#38BDF8" stroke-width="1.4"/>
+                <line x1="52" y1="148" x2="64" y2="148" stroke="#38BDF8" stroke-width="1.4"/>
+                <text x="48" y="94" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#38BDF8">H=14.80m</text>
+                <line x1="72" y1="88" x2="248" y2="88" stroke="#34D399" stroke-width="1.8"/>
+                <text x="254" y="91" font-family="'JetBrains Mono', monospace" font-size="8" fill="#34D399">AS-BUILT</text>
+              </svg>
+            </div>
+            <div>
+              <div class="visual-card-top-meta">
+                <span class="visual-pill-code">M-04 · RÉCOLEMENT</span>
+                <span class="visual-pill-spec">EXÉCUTION</span>
+              </div>
+              <h3 class="visual-card-title">État des Lieux &amp; Récolement</h3>
+              <p class="visual-card-caption">Relevés d'architecture (intérieurs, coupes, façades), plans de récolement d'ouvrages en fin de travaux et métrés contradictoires.</p>
+              <div class="visual-micro-tags">
+                <span>Plans As-Built</span>
+                <span>Relevés façades</span>
+                <span>Métrés</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="visual-card scroll-reveal">
+            <div class="svg-diagram-stage">
+              <svg viewBox="0 0 320 175" fill="none" aria-label="Schéma SVG Morcellement et division parcellaire">
+                <g stroke="#DFC07A" stroke-width="1.5" fill="rgba(223,192,122,0.07)">
+                  <rect x="44" y="24" width="72" height="52" rx="2"/>
+                  <rect x="124" y="24" width="72" height="52" rx="2"/>
+                  <rect x="204" y="24" width="72" height="52" rx="2"/>
+                  <rect x="44" y="102" width="72" height="52" rx="2"/>
+                  <rect x="124" y="102" width="72" height="52" rx="2"/>
+                  <rect x="204" y="102" width="72" height="52" rx="2"/>
+                </g>
+                <line x1="36" y1="89" x2="284" y2="89" stroke="#38BDF8" stroke-width="1.5" stroke-dasharray="5 4"/>
+                <g font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#F5DEB3" text-anchor="middle">
+                  <text x="80" y="54">LOT 01</text>
+                  <text x="160" y="54">LOT 02</text>
+                  <text x="240" y="54">LOT 03</text>
+                  <text x="80" y="132">LOT 04</text>
+                  <text x="160" y="132">LOT 05</text>
+                  <text x="240" y="132">LOT 06</text>
+                </g>
+              </svg>
+            </div>
+            <div>
+              <div class="visual-card-top-meta">
+                <span class="visual-pill-code">M-05 · URBANISME</span>
+                <span class="visual-pill-spec">PARCELLAIRE</span>
+              </div>
+              <h3 class="visual-card-title">Morcellement &amp; Lotissement</h3>
+              <p class="visual-card-caption">Dossiers techniques de division parcellaire, partage successoral ou conventionnel, aménagement de lotissements et piquetage de lots.</p>
+              <div class="visual-micro-tags">
+                <span>Division parcellaire</span>
+                <span>Partage</span>
+                <span>Piquetage</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="visual-card scroll-reveal">
+            <div class="svg-diagram-stage">
+              <svg viewBox="0 0 320 175" fill="none" aria-label="Schéma SVG Profil en long et études VRD">
+                <line x1="32" y1="138" x2="292" y2="138" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                <line x1="32" y1="28" x2="32" y2="138" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                <path d="M36,105 Q95,45 165,88 T288,52" stroke="#34D399" stroke-width="1.8" stroke-dasharray="4 3" fill="none"/>
+                <line x1="36" y1="98" x2="288" y2="58" stroke="#DFC07A" stroke-width="2.4"/>
+                <line x1="95" y1="68" x2="95" y2="138" stroke="rgba(56,189,248,0.35)" stroke-width="1"/>
+                <line x1="165" y1="78" x2="165" y2="138" stroke="rgba(56,189,248,0.35)" stroke-width="1"/>
+                <line x1="235" y1="66" x2="235" y2="138" stroke="rgba(56,189,248,0.35)" stroke-width="1"/>
+                <text x="44" y="42" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#DFC07A">PROFIL EN LONG · PENTE +2.4%</text>
+                <text x="160" y="156" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" fill="#38BDF8">VOIRIE · ASSAINISSEMENT · AEP</text>
+              </svg>
+            </div>
+            <div>
+              <div class="visual-card-top-meta">
+                <span class="visual-pill-code">M-06 · INFRASTRUCTURES</span>
+                <span class="visual-pill-spec">COVADIS / VRD</span>
+              </div>
+              <h3 class="visual-card-title">Études &amp; Suivis VRD</h3>
+              <p class="visual-card-caption">Conception géométrique routière, profils en long et en travers, réseaux d'assainissement et AEP, contrôle topographique sur chantier.</p>
+              <div class="visual-micro-tags">
+                <span>Profils en long</span>
+                <span>Réseaux AEP / EU</span>
+                <span>Suivi BTP</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="references" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-eyebrow">Références Chantiers &amp; Grands Comptes</span>
+          <h2 class="section-title">Interventions réalisées en Algérie</h2>
+          <p class="section-sub">
+            Principaux maîtres d'ouvrage accompagnés par les équipes du cabinet GeoMed.
+          </p>
+        </div>
+
+        <div class="filter-bar">
+          <button type="button" class="filter-btn active" data-filter="all">Toutes (6)</button>
+          <button type="button" class="filter-btn" data-filter="industrie">Industrie &amp; Énergie</button>
+          <button type="button" class="filter-btn" data-filter="hotellerie">Hôtellerie</button>
+          <button type="button" class="filter-btn" data-filter="immobilier">Promotion &amp; Urbanisme</button>
+        </div>
+
+        <div class="ref-bento-grid">
+          <article class="ref-card scroll-reveal" data-category="industrie">
+            <div>
+              <div class="ref-svg-banner">
+                <svg viewBox="0 0 280 110" fill="none" aria-label="Illustration SVG Usine FIAT Algérie">
+                  <path d="M24,86 L24,42 L78,26 L78,42 L134,26 L134,42 L190,26 L256,42 L256,86 Z" stroke="#DFC07A" stroke-width="1.6" fill="rgba(223,192,122,0.07)"/>
+                  <line x1="16" y1="86" x2="264" y2="86" stroke="#38BDF8" stroke-width="1.8"/>
+                  <circle cx="78" cy="64" r="5" stroke="#34D399" stroke-width="1.6"/>
+                  <circle cx="134" cy="64" r="5" stroke="#34D399" stroke-width="1.6"/>
+                  <circle cx="190" cy="64" r="5" stroke="#34D399" stroke-width="1.6"/>
+                  <line x1="40" y1="64" x2="240" y2="64" stroke="#34D399" stroke-width="1" stroke-dasharray="3 3"/>
+                  <text x="140" y="102" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" fill="#38BDF8">IMPLANTATION INDUSTRIELLE ±1.5 MM</text>
+                </svg>
+              </div>
+              <h3 class="ref-client-name">Usine FIAT Algérie</h3>
+              <div class="ref-client-loc">ZONE INDUSTRIELLE DE TAFRAOUI · ORAN</div>
+              <p class="ref-client-short">Canevas de précision, implantation des axes de charpentes métalliques, nivellement des dallages industriels et plans de récolement.</p>
+            </div>
+            <div class="visual-micro-tags">
+              <span>Station 1"</span><span>Nivellement Invar</span><span>Récolement</span>
+            </div>
+          </article>
+
+          <article class="ref-card scroll-reveal" data-category="industrie">
+            <div>
+              <div class="ref-svg-banner">
+                <svg viewBox="0 0 280 110" fill="none" aria-label="Illustration SVG Sonatrach Pipelines et Raffineries">
+                  <rect x="42" y="28" width="22" height="58" stroke="#DFC07A" stroke-width="1.6" fill="rgba(223,192,122,0.08)"/>
+                  <rect x="74" y="38" width="18" height="48" stroke="#DFC07A" stroke-width="1.6" fill="rgba(223,192,122,0.08)"/>
+                  <path d="M108,72 L254,72 M108,80 L254,80" stroke="#38BDF8" stroke-width="2"/>
+                  <circle cx="155" cy="76" r="6" fill="#030508" stroke="#34D399" stroke-width="1.8"/>
+                  <circle cx="215" cy="76" r="6" fill="#030508" stroke="#34D399" stroke-width="1.8"/>
+                  <text x="180" y="48" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" fill="#DFC07A">ARZEW · BETHIOUA · SUD ALGÉRIEN</text>
+                </svg>
+              </div>
+              <h3 class="ref-client-name">SONATRACH</h3>
+              <div class="ref-client-loc">PÔLE D'ARZEW &amp; SITES DU SUD ALGÉRIEN</div>
+              <p class="ref-client-short">Levés topographiques d'installations pétrochimiques et gazières, couloirs de canalisations, rattachement GNSS et cubatures.</p>
+            </div>
+            <div class="visual-micro-tags">
+              <span>GNSS RTK/PPK</span><span>LiDAR 3D</span><span>Canalisations</span>
+            </div>
+          </article>
+
+          <article class="ref-card scroll-reveal" data-category="industrie">
+            <div>
+              <div class="ref-svg-banner">
+                <svg viewBox="0 0 280 110" fill="none" aria-label="Illustration SVG Sonelgaz Lignes Haute Tension">
+                  <polygon points="65,20 77,86 53,86" stroke="#DFC07A" stroke-width="1.5" fill="none"/>
+                  <polygon points="215,20 227,86 203,86" stroke="#DFC07A" stroke-width="1.5" fill="none"/>
+                  <line x1="48" y1="36" x2="82" y2="36" stroke="#DFC07A" stroke-width="1.5"/>
+                  <line x1="198" y1="36" x2="232" y2="36" stroke="#DFC07A" stroke-width="1.5"/>
+                  <path d="M65,36 Q140,68 215,36" stroke="#38BDF8" stroke-width="1.5"/>
+                  <path d="M65,48 Q140,78 215,48" stroke="#34D399" stroke-width="1.2" stroke-dasharray="3 3"/>
+                  <text x="140" y="102" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" fill="#38BDF8">COULOIRS HT / MT &amp; POSTES</text>
+                </svg>
+              </div>
+              <h3 class="ref-client-name">SONELGAZ</h3>
+              <div class="ref-client-loc">ORAN · OUEST · HAUTS-PLATEAUX · SUD</div>
+              <p class="ref-client-short">Études de tracés et profils en long de lignes électriques HT/MT, implantation de pylônes et relevés de postes de transformation.</p>
+            </div>
+            <div class="visual-micro-tags">
+              <span>Profils HT/MT</span><span>Implantation</span><span>Servitudes</span>
+            </div>
+          </article>
+
+          <article class="ref-card scroll-reveal" data-category="hotellerie">
+            <div>
+              <div class="ref-svg-banner">
+                <svg viewBox="0 0 280 110" fill="none" aria-label="Illustration SVG Sheraton Oran Towers">
+                  <rect x="78" y="18" width="44" height="68" rx="3" stroke="#DFC07A" stroke-width="1.6" fill="rgba(223,192,122,0.08)"/>
+                  <rect x="132" y="28" width="70" height="58" rx="3" stroke="#38BDF8" stroke-width="1.6" fill="rgba(56,189,248,0.08)"/>
+                  <line x1="36" y1="86" x2="244" y2="86" stroke="#DFC07A" stroke-width="1.5"/>
+                  <text x="140" y="102" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" fill="#F5DEB3">RELEVÉ ARCHITECTURAL &amp; CONTRÔLE</text>
+                </svg>
+              </div>
+              <h3 class="ref-client-name">Sheraton Oran Hotel</h3>
+              <div class="ref-client-loc">CANASTEL · ORAN</div>
+              <p class="ref-client-short">Relevés architecturaux et techniques, états des lieux, contrôle géométrique d'ouvrages et récolement de réseaux.</p>
+            </div>
+            <div class="visual-micro-tags">
+              <span>Relevé 3D</span><span>Auscultation</span><span>État des lieux</span>
+            </div>
+          </article>
+
+          <article class="ref-card scroll-reveal" data-category="hotellerie">
+            <div>
+              <div class="ref-svg-banner">
+                <svg viewBox="0 0 280 110" fill="none" aria-label="Illustration SVG Groupe AZ Hôtels">
+                  <polygon points="52,86 52,38 140,20 228,38 228,86" stroke="#DFC07A" stroke-width="1.6" fill="rgba(223,192,122,0.07)"/>
+                  <line x1="140" y1="20" x2="140" y2="86" stroke="#38BDF8" stroke-width="1.2" stroke-dasharray="3 3"/>
+                  <line x1="32" y1="86" x2="248" y2="86" stroke="#34D399" stroke-width="1.6"/>
+                  <text x="140" y="102" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" fill="#34D399">IMPLANTATION &amp; VRD HÔTELIER</text>
+                </svg>
+              </div>
+              <h3 class="ref-client-name">Groupe AZ Hôtels</h3>
+              <div class="ref-client-loc">ORAN &amp; COMPLEXES HÔTELIERS</div>
+              <p class="ref-client-short">Implantation des ouvrages de génie civil, suivi topographique de chantier, aménagements VRD et métrés d'exécution.</p>
+            </div>
+            <div class="visual-micro-tags">
+              <span>Implantation</span><span>VRD</span><span>Métrés</span>
+            </div>
+          </article>
+
+          <article class="ref-card scroll-reveal" data-category="immobilier">
+            <div>
+              <div class="ref-svg-banner">
+                <svg viewBox="0 0 280 110" fill="none" aria-label="Illustration SVG Promotions Immobilières">
+                  <rect x="56" y="34" width="36" height="52" stroke="#38BDF8" stroke-width="1.5"/>
+                  <rect x="104" y="16" width="44" height="70" stroke="#DFC07A" stroke-width="1.8" fill="rgba(223,192,122,0.09)"/>
+                  <rect x="160" y="26" width="42" height="60" stroke="#34D399" stroke-width="1.5"/>
+                  <line x1="34" y1="86" x2="246" y2="86" stroke="#DFC07A" stroke-width="1.5"/>
+                  <text x="140" y="102" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="8" fill="#DFC07A">EDD COPROPRIÉTÉ · BORNAGE · VRD</text>
+                </svg>
+              </div>
+              <h3 class="ref-client-name">Promotions Immobilières</h3>
+              <div class="ref-client-loc">ORAN · ALGER · BLIDA · TLEMCEN · TIARET</div>
+              <p class="ref-client-short">Accompagnement des promoteurs : bornage de l'assiette, certificats de morcellement, implantation de tours et dossiers EDD.</p>
+            </div>
+            <div class="visual-micro-tags">
+              <span>Dossiers EDD</span><span>Morcellement</span><span>Implantation</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="qualifier" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-eyebrow">Qualification Technique</span>
+          <h2 class="section-title">Qualifier un besoin topographique ou foncier</h2>
+          <p class="section-sub">Sélectionnez la nature de la mission et l'emprise du site pour préparer votre demande d'intervention.</p>
+        </div>
+
+        <div class="simulator-bento">
+          <div>
+            <div class="visual-pill-code" style="margin-bottom:0.55rem;">01. NATURE DE LA MISSION</div>
+            <div class="sim-pills">
+              <button type="button" class="sim-pill active" data-sim-mission="topo">Travaux Topographiques &amp; LiDAR</button>
+              <button type="button" class="sim-pill" data-sim-mission="bornage">Bornage &amp; Délimitation</button>
+              <button type="button" class="sim-pill" data-sim-mission="edd">EDD (Copropriété)</button>
+              <button type="button" class="sim-pill" data-sim-mission="etat">État des Lieux &amp; Récolement</button>
+              <button type="button" class="sim-pill" data-sim-mission="morcellement">Morcellement &amp; Lotissement</button>
+              <button type="button" class="sim-pill" data-sim-mission="vrd">Études &amp; Suivis VRD</button>
+            </div>
+
+            <div class="visual-pill-code" style="margin-bottom:0.55rem;">02. TYPOLOGIE DU SITE</div>
+            <div class="sim-pills">
+              <button type="button" class="sim-pill active" data-sim-terrain="Site Industriel / Chantier">Site industriel / Chantier BTP</button>
+              <button type="button" class="sim-pill" data-sim-terrain="Promotion Immobilière / Bâti">Promotion immobilière / Bâti urbain</button>
+              <button type="button" class="sim-pill" data-sim-terrain="Sud Algérien / Corridor Réseau">Sud algérien / Corridor réseau</button>
+              <button type="button" class="sim-pill" data-sim-terrain="Assiette Foncière / Terrain Nu">Assiette foncière / Terrain nu</button>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; margin-bottom:0.4rem;">
+              <label for="sim-area-range" class="visual-pill-code">03. SUPERFICIE ESTIMÉE</label>
+              <strong id="sim-area-display" style="font-family:var(--font-mono); color:var(--gold-bright);">5 000 m²</strong>
+            </div>
+            <input type="range" id="sim-area-range" class="sim-range" min="200" max="50000" step="200" value="5000">
+          </div>
+
+          <div class="sim-display-card" aria-live="polite">
+            <div>
+              <span class="visual-pill-spec">FICHE PROTOCOLE GEOMED</span>
+              <h3 id="sim-out-title" style="font-family:var(--font-display); font-size:1.45rem; margin-top:0.5rem;">Travaux Topographiques, LiDAR 3D &amp; Implantation</h3>
+
+              <div class="sim-kpi-grid">
+                <div class="sim-kpi-cell">
+                  <small>Instrumentation</small>
+                  <strong id="sim-out-instrument">Scanner LiDAR 3D + GNSS RTK + Station 1"</strong>
+                </div>
+                <div class="sim-kpi-cell">
+                  <small>Tolérance</small>
+                  <strong id="sim-out-precision">± 1.5 mm</strong>
+                </div>
+                <div class="sim-kpi-cell">
+                  <small>Délai indicatif</small>
+                  <strong id="sim-out-delay">3 à 5 jours ouvrés</strong>
+                </div>
+                <div class="sim-kpi-cell">
+                  <small>Équipe mobilisée</small>
+                  <strong id="sim-out-team">1 Brigade Active (Équipe de 5 Topographes)</strong>
+                </div>
+              </div>
+
+              <p id="sim-out-deliverables" style="font-size:0.85rem; color:var(--text-silver); margin-bottom:1.25rem;">
+                Nuage de points LiDAR 3D, Plan coté (MNT 3D / Courbes), Calculs de cubatures, Fichiers DWG AutoCAD/Covadis.
+              </p>
+            </div>
+
+            <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+              <button type="button" id="sim-apply-to-form" class="btn btn-gold" style="flex:1;">
+                <span>Joindre au formulaire</span>
+              </button>
+              <a id="sim-whatsapp-btn" href="https://wa.me/213661431174" target="_blank" rel="noopener" class="btn btn-cyan">
+                <span>WhatsApp Direct</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-eyebrow">Coordonnées du Cabinet</span>
+          <h2 class="section-title">Contacter le cabinet GeoMed</h2>
+        </div>
+
+        <div class="contact-bento">
+          <div class="contact-card">
+            <h3 style="font-family:var(--font-display); font-size:1.4rem;">Cabinet GeoMed · Oran</h3>
+            <p style="font-size:0.88rem; color:var(--text-silver);">Direction technique : Mohamed Amine Belarbia · Géomètre-Topographe &amp; Métreur (16 ans d'expérience)</p>
+
+            <div class="channel-stack">
+              <a href="tel:+213661431174" class="channel-row">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DFC07A" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <div>
+                  <small style="display:block; font-family:var(--font-mono); font-size:0.65rem; color:var(--text-dim);">LIGNE PRINCIPALE &amp; WHATSAPP</small>
+                  <strong>+213 661 43 11 74</strong>
+                </div>
+              </a>
+
+              <a href="tel:+213558426257" class="channel-row">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <div>
+                  <small style="display:block; font-family:var(--font-mono); font-size:0.65rem; color:var(--text-dim);">LIGNE SECONDAIRE</small>
+                  <strong>+213 558 42 62 57</strong>
+                </div>
+              </a>
+
+              <a href="mailto:belarbia.85@gmail.com" class="channel-row">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#DFC07A" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                <div>
+                  <small style="display:block; font-family:var(--font-mono); font-size:0.65rem; color:var(--text-dim);">COURRIER ÉLECTRONIQUE</small>
+                  <strong>belarbia.85@gmail.com</strong>
+                </div>
+              </a>
+
+              <div class="channel-row">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div>
+                  <small style="display:block; font-family:var(--font-mono); font-size:0.65rem; color:var(--text-dim);">SIÈGE SOCIAL</small>
+                  <strong>N° 15 Cité 50 Logts Ben Zerdjeb, Misserghine · Oran</strong>
+                </div>
+              </div>
+            </div>
+
+            <a href="https://wa.me/213661431174" target="_blank" rel="noopener" class="btn btn-cyan" style="width:100%;">
+              <span>WhatsApp (+213 661 43 11 74)</span>
+            </a>
+          </div>
+
+          <div class="contact-card">
+            <form id="geomed-consult-form" novalidate>
+              <div class="form-row-2">
+                <div class="field">
+                  <label for="consult-name">Nom &amp; Prénom *</label>
+                  <span id="name-hint" class="hint">Nom du demandeur ou responsable projet</span>
+                  <input type="text" id="consult-name" name="name" required minlength="2" autocomplete="name" aria-describedby="name-hint" aria-errormessage="name-error">
+                  <div id="name-error" class="error-msg"><span aria-hidden="true">❌</span> Veuillez renseigner votre nom.</div>
+                </div>
+
+                <div class="field">
+                  <label for="consult-org">Entreprise / Maître d'Ouvrage</label>
+                  <span id="org-hint" class="hint">Société, Promoteur, BET ou Particulier</span>
+                  <input type="text" id="consult-org" name="organization" autocomplete="organization" aria-describedby="org-hint">
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="field">
+                  <label for="consult-phone">Téléphone *</label>
+                  <span id="phone-hint" class="hint">Format : 06 61 43 11 74</span>
+                  <input type="tel" id="consult-phone" name="phone" required inputmode="tel" autocomplete="tel" pattern="[\+0-9\s\-\(\)]{8,20}" aria-describedby="phone-hint" aria-errormessage="phone-error">
+                  <div id="phone-error" class="error-msg"><span aria-hidden="true">❌</span> Veuillez saisir un numéro valide.</div>
+                </div>
+
+                <div class="field">
+                  <label for="consult-email">Email *</label>
+                  <span id="email-hint" class="hint">Format : contact@entreprise.dz</span>
+                  <input type="email" id="consult-email" name="email" required autocomplete="email" aria-describedby="email-hint" aria-errormessage="email-error">
+                  <div id="email-error" class="error-msg"><span aria-hidden="true">❌</span> Veuillez saisir une adresse email valide.</div>
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="field">
+                  <label for="consult-service">Pôle d'Intervention *</label>
+                  <span id="service-hint" class="hint">Sélectionnez la prestation souhaitée</span>
+                  <select id="consult-service" name="service" required aria-describedby="service-hint">
+                    <option value="topo">Travaux Topographiques, LiDAR 3D &amp; GNSS</option>
+                    <option value="bornage">Bornage &amp; Délimitation Foncière</option>
+                    <option value="edd">EDD (État Descriptif de Division)</option>
+                    <option value="etat">État des Lieux &amp; Récolement</option>
+                    <option value="morcellement">Morcellement &amp; Lotissement</option>
+                    <option value="vrd">Études &amp; Suivis VRD</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="consult-location">Wilaya du Projet *</label>
+                  <span id="loc-hint" class="hint">Oran, Alger, Blida, Tlemcen, Tiaret, Sud...</span>
+                  <input type="text" id="consult-location" name="location" required value="Oran" aria-describedby="loc-hint" aria-errormessage="loc-error">
+                  <div id="loc-error" class="error-msg"><span aria-hidden="true">❌</span> Veuillez indiquer la commune ou wilaya.</div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="consult-message">Objet et détails techniques *</label>
+                <span id="msg-hint" class="hint">Superficie approximative, échéance et livrables attendus</span>
+                <textarea id="consult-message" name="message" rows="3" required minlength="10" aria-describedby="msg-hint" aria-errormessage="msg-error"></textarea>
+                <div id="msg-error" class="error-msg"><span aria-hidden="true">❌</span> Veuillez préciser votre besoin (10 caractères minimum).</div>
+              </div>
+
+              <button type="submit" class="btn btn-gold" style="width:100%;">
+                <span>Transmettre la demande au cabinet GeoMed</span>
+              </button>
+
+              <div id="form-status-feedback" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+      <div>
+        <strong style="color:var(--text-white);">CABINET GEOMED · BUREAU D'ÉTUDES TOPOGRAPHIQUES, LIDAR 3D &amp; GÉODÉSIE GNSS</strong><br>
+        <span>Direction : Mohamed Amine Belarbia · N° 15 Cité 50 Logts Ben Zerdjeb, Misserghine · Oran · +213 661 43 11 74 / +213 558 42 62 57 · belarbia.85@gmail.com · geomedz.com</span>
+      </div>
+      <div style="display:flex; gap:0.75rem;">
+        <a href="assets/mohamed-belarbia-geomed.vcf" download="GeoMed_Mohamed_Amine_Belarbia.vcf" class="btn btn-glass">Fiche Contact (.vcf)</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
