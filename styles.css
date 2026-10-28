@@ -969,6 +969,79 @@ textarea {
   font-weight: 700;
 }
 
+/* Bandeau Grands Comptes & Maîtres d'Ouvrage (Logos Vectoriels SVG) */
+.clients-trust-bar {
+  margin-top: 1.9rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.clients-trust-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.85rem;
+}
+
+.clients-trust-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-secondary);
+}
+
+.clients-svg-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.65rem;
+}
+
+.client-svg-plate {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.client-svg-plate:hover {
+  transform: translateY(-2px);
+  border-color: var(--btp-orange);
+  box-shadow: var(--shadow-card);
+}
+
+.client-svg-plate svg {
+  width: 100%;
+  max-width: 210px;
+  height: 44px;
+  display: block;
+}
+
+.ref-brand-badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-bottom: 0.65rem;
+  margin-bottom: 0.7rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.ref-brand-badge svg {
+  height: 36px;
+  width: auto;
+  max-width: 170px;
+  display: block;
+}
+
 /* ==========================================================================
    SECTIONS UNIFIÉES CLAIRES
    ========================================================================== */
@@ -1900,8 +1973,8 @@ textarea:user-valid {
   @supports ((animation-timeline: view()) and (animation-range: entry)) {
     @keyframes scrollSlideIn {
       from {
-        opacity: 0.15;
-        transform: translateY(20px) scale(0.985);
+        opacity: 1;
+        transform: translateY(8px) scale(1);
       }
       to {
         opacity: 1;
@@ -2189,7 +2262,8 @@ textarea:user-valid {
   }
 
   .services-grid-3col,
-  .ref-bento-grid {
+  .ref-bento-grid,
+  .clients-svg-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -2349,7 +2423,8 @@ textarea:user-valid {
   }
 
   .hero-kpi-grid,
-  .terrain-bento-gallery {
+  .terrain-bento-gallery,
+  .clients-svg-grid {
     grid-template-columns: 1fr;
   }
 }
