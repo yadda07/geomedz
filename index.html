@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261028-v4">
+  <link rel="stylesheet" href="styles.css?v=20261028-v5">
 </head>
 <body>
 
@@ -30,9 +30,9 @@
                 <polygon points="32,13 48,22 48,42 32,51 16,42 16,22" stroke="#141A21" stroke-width="1.6" fill="#EEF8F5"/>
                 <circle cx="32" cy="32" r="4.5" fill="#C84B28"/>
               </svg>
-              <div>
+              <div class="brand-text-col">
                 <div class="brand-title">GEO<span>MED</span></div>
-                <span class="brand-sub">HAÏ AKID LOTFI · ORAN</span>
+                <span class="brand-sub">GÉODÉSIE &amp; LIDAR 3D</span>
               </div>
             </div>
             <button type="button" id="drawer-close" class="drawer-close-btn" aria-label="Fermer le menu">✕</button>
@@ -120,28 +120,24 @@
     </div>
   </div>
 
-  <!-- BARRE TÉLÉMÉTRIQUE SUPÉRIEURE -->
+  <!-- BARRE TÉLÉMÉTRIQUE SUPÉRIEURE JUSTIFIÉE -->
   <div class="top-telemetry-bar">
     <div class="container top-telemetry-inner">
-      <div class="telemetry-pills">
-        <span class="telemetry-chip rtk-live">
-          <i class="pulse-dot" aria-hidden="true"></i>
-          <span>RTK FIX · 2 BRIGADES</span>
-        </span>
-        <span class="telemetry-chip highlight">CABINET GEOMED · ORAN</span>
-        <span class="telemetry-chip">DIRECTION : M. BELARBIA · 16 ANS D'EXPÉRIENCE</span>
-        <a href="https://maps.app.goo.gl/W18PGV1Ee4tDKSPc6" target="_blank" rel="noopener" class="telemetry-chip">HAÏ AKID LOTFI · ORAN ↗</a>
-      </div>
-      <div class="telemetry-pills telemetry-coords-desktop">
-        <span>WGS84 / UTM ZONE 30N · 35°43'27"N · 0°35'28"W</span>
+      <a href="https://maps.app.goo.gl/W18PGV1Ee4tDKSPc6" target="_blank" rel="noopener" class="telemetry-bar-left">
+        <i class="pulse-dot" aria-hidden="true"></i>
+        <span>HAÏ AKID LOTFI · ORAN ↗</span>
+      </a>
+      <div class="telemetry-bar-right">
+        <span class="telemetry-desktop-only">DIRECTION : M. BELARBIA · 16 ANS D'EXPÉRIENCE · 2 BRIGADES</span>
+        <a href="tel:+213661431174" class="telemetry-phone-link">06 61 43 11 74</a>
       </div>
     </div>
   </div>
 
-  <!-- HEADER STICKY -->
+  <!-- HEADER STICKY ÉPURÉ & JUSTIFIÉ -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#top" class="brand-lockup" aria-label="GeoMed · Bureau d'Études Topographiques à Oran">
+      <a href="#top" class="brand-lockup" aria-label="GeoMed · Géodésie, LiDAR 3D et Topographie à Oran">
         <svg class="brand-mark-svg" viewBox="0 0 64 64" fill="none" aria-hidden="true">
           <rect x="4" y="4" width="56" height="56" rx="12" fill="#FFFFFF" stroke="#0D7A5F" stroke-width="2.2"/>
           <circle cx="32" cy="32" r="19" stroke="#0D7A5F" stroke-width="1.4" stroke-dasharray="3 3"/>
@@ -152,24 +148,26 @@
           <line x1="50" y1="32" x2="58" y2="32" stroke="#C84B28" stroke-width="2.2"/>
           <circle cx="32" cy="32" r="4.5" fill="#C84B28"/>
         </svg>
-        <div>
+        <div class="brand-text-col">
           <div class="brand-title">GEO<span>MED</span></div>
-          <span class="brand-sub">BUREAU TOPOGRAPHIQUE · ORAN</span>
+          <span class="brand-sub">GÉODÉSIE &amp; LIDAR 3D</span>
         </div>
       </a>
 
       <nav class="main-nav" aria-label="Navigation principale">
-        <a href="#territoire" class="nav-link">Territoire &amp; Brigades</a>
+        <a href="#territoire" class="nav-link">Territoire &amp; 3D</a>
         <a href="#services" class="nav-link">Prestations</a>
         <a href="#references" class="nav-link">Références</a>
         <a href="#terrain" class="nav-link">Chantiers</a>
-        <a href="#qualifier" class="nav-link">Qualification</a>
         <a href="#contact" class="nav-link">Contact</a>
       </nav>
 
       <div class="header-actions">
-        <a href="tel:+213661431174" class="btn btn-phone-chip">06 61 43 11 74</a>
-        <a href="#qualifier" class="btn btn-primary">Qualifier un dossier</a>
+        <a href="#qualifier" class="btn btn-primary header-cta-desktop">Qualifier un dossier</a>
+        <a href="tel:+213661431174" class="mobile-header-call" aria-label="Appeler directement le 06 61 43 11 74">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>Appeler</span>
+        </a>
         <button type="button" id="drawer-open" class="drawer-trigger-btn" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="drawer">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
             <path d="M4 7h16M4 12h16M4 17h12"/>
