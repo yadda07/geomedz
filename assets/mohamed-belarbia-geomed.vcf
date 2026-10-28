@@ -1,4 +1,4 @@
-BEGIN:VCARD
+﻿BEGIN:VCARD
 VERSION:3.0
 N:Belarbia;Mohamed Amine;;;
 FN:Cabinet GeoMed - Mohamed Amine Belarbia
@@ -8,6 +8,6 @@ TEL;TYPE=CELL,VOICE,PREF:+213661431174
 TEL;TYPE=CELL,VOICE:+213558426257
 EMAIL;TYPE=PREF,INTERNET:belarbia.85@gmail.com
 URL:https://geomedz.com
-ADR;TYPE=WORK:;;N 15 Cite 50 Logts Ben Zerdjeb, Misserghine;Oran;Oran;31180;Algerie
+ADR;TYPE=WORK:;;N 15 Cite 50 Logts Ben Zerdjeb, AKID LOTFI;Oran;Oran;31180;Algerie
 NOTE:Site web : https://geomedz.com . Cabinet GeoMed (16 ans d'experience, 2 Brigades, 5 Topographes, LiDAR 3D & GNSS RTK). Interventions : Oran, Alger, Blida, Tlemcen, Ain Temouchent, Relizane, Tiaret et Sud algerien.
 END:VCARD

@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    BELARBIA MOHAMED AMINE · GEOMED (ORAN, ALGÉRIE)
    Moteur Interactif 2026 :
    - Console Géodésique 3 Modes (MNT 3D Isométrique, Courbes CAD, Nuage LiDAR)
@@ -35,18 +35,15 @@
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0) scale(1)';
+            entry.target.style.transform = 'translateY(0)';
           }
         }
       },
-      { threshold: 0.12 }
+      { threshold: 0.08 }
     );
 
     document.querySelectorAll('.scroll-reveal').forEach((el) => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(24px) scale(0.98)';
-      el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+      el.style.transition = 'transform 0.35s ease';
       observer.observe(el);
     });
   }
@@ -254,7 +251,7 @@
 
       // Draw Geodetic Control Benchmarks on the 3D surface
       const benchmarks = [
-        { r: 6, c: 8, label: 'BN-01 MISSERGHINE (+118.4m)' },
+        { r: 6, c: 8, label: 'BN-01 AKID LOTFI (+118.4m)' },
         { r: 10, c: 15, label: 'ST-FIAT TAFRAOUI (+164.2m)' },
         { r: 4, c: 16, label: 'ST-ARZEW SONATRACH' }
       ];
@@ -798,7 +795,7 @@
      ------------------------------------------------------------------------ */
   const initBusinessCardStudio = () => {
     const mecardPayload =
-      'MECARD:N:Belarbia,Mohamed Amine;ORG:Cabinet GeoMed;TEL:+213661431174;TEL:+213558426257;EMAIL:belarbia.85@gmail.com;URL:https://geomedz.com;ADR:Misserghine Oran;;';
+      'MECARD:N:Belarbia,Mohamed Amine;ORG:Cabinet GeoMed;TEL:+213661431174;TEL:+213558426257;EMAIL:belarbia.85@gmail.com;URL:https://geomedz.com;ADR:AKID LOTFI Oran;;';
 
     const qrContainers = document.querySelectorAll('.js-geomed-qr');
     const svgMarkup = QRGenerator.toSVG(mecardPayload, '#0b111e');
