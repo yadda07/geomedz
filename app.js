@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    BELARBIA MOHAMED AMINE · GEOMED (ORAN, ALGÉRIE)
    Moteur Interactif 2026 :
    - Console Géodésique 3 Modes (MNT 3D Isométrique, Courbes CAD, Nuage LiDAR)
@@ -908,11 +908,45 @@
     });
   };
 
+  const initPhotoLightbox = () => {
+    const dialog = document.getElementById('photo-lightbox');
+    const imgEl = document.getElementById('lightbox-img');
+    const titleEl = document.getElementById('lightbox-title');
+    const metaEl = document.getElementById('lightbox-meta');
+    const closeBtn = document.getElementById('lightbox-close');
+    if (!dialog || !imgEl) return;
+
+    document.querySelectorAll('[data-lightbox-src]').forEach((item) => {
+      item.addEventListener('click', () => {
+        const src = item.getAttribute('data-lightbox-src');
+        const title = item.getAttribute('data-lightbox-title') || 'Chantier GeoMed';
+        const meta = item.getAttribute('data-lightbox-meta') || 'INSTRUMENTATION LEICA · GEOMED';
+        imgEl.src = src;
+        imgEl.alt = title;
+        if (titleEl) titleEl.textContent = title;
+        if (metaEl) metaEl.textContent = meta;
+        if (typeof dialog.showModal === 'function') {
+          dialog.showModal();
+        }
+      });
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => dialog.close());
+    }
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) {
+        dialog.close();
+      }
+    });
+  };
+
   document.addEventListener('DOMContentLoaded', () => {
     initGeodeticConsole();
     initReferenceFilters();
     initMissionSimulator();
     initBusinessCardStudio();
     initContactForm();
+    initPhotoLightbox();
   });
 })();
