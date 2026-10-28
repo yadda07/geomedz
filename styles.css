@@ -1,9 +1,7 @@
 /* ==========================================================================
    CABINET GEOMED · BUREAU D'ÉTUDES TOPOGRAPHIQUES, LIDAR 3D & GÉODÉSIE (ORAN)
    Identité Visuelle Unifiée : Clair Architectural & Plan Topographique Cadastral
-   Palette : Papier Topographique (#F6F5F0), Blanc Pur (#FFFFFF),
-             Fond Plan Millimétré (#F9F8F3), Encre Géodésique (#141A21),
-             Vert Optique Leica (#0D7A5F), Terracotta Balise BTP (#C84B28)
+   Architecture Responsive Mobile/Tablette (iOS & Android App) + Moteur Interactif
    ========================================================================== */
 
 :root {
@@ -17,7 +15,7 @@
   --border-blueprint: #d5d0c3;
 
   --ink-primary: #141a21;
-  --ink-secondary: #424d5B;
+  --ink-secondary: #424d5b;
   --ink-muted: #6c7786;
 
   --btp-orange: #c84b28;
@@ -31,7 +29,12 @@
   --cad-blue: #0369a1;
   --cad-water: #e0f2fe;
 
+  --gold: #dfc07a;
+  --cyan: #38bdf8;
+  --border-glass: rgba(197, 191, 176, 0.45);
+
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   --radius-sm: 6px;
@@ -39,7 +42,8 @@
   --radius-lg: 14px;
   --shadow-sm: 0 2px 8px rgba(20, 26, 33, 0.04);
   --shadow-card: 0 8px 24px rgba(20, 26, 33, 0.06);
-  --shadow-hover: 0 14px 32px rgba(20, 26, 33, 0.1);
+  --shadow-hover: 0 14px 32px rgba(20, 26, 33, 0.11);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 *,
@@ -52,7 +56,9 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 82px;
   font-size: 16px;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -62,10 +68,12 @@ body {
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  -webkit-tap-highlight-color: rgba(13, 122, 95, 0.12);
 }
 
 img,
-svg {
+svg,
+canvas {
   display: block;
   max-width: 100%;
 }
@@ -84,17 +92,17 @@ textarea {
 }
 
 .container {
-  width: min(1220px, 92vw);
+  width: min(1220px, 92dvw);
   margin-inline: auto;
 }
 
 /* ==========================================================================
-   1. BARRE TÉLÉMÉTRIQUE & HEADER STICKY (SANS DÉBORDEMENT)
+   1. BARRE TÉLÉMÉTRIQUE LIVE & HEADER STICKY
    ========================================================================== */
 .top-telemetry-bar {
   background: var(--bg-section-alt);
   border-bottom: 1px solid var(--border-subtle);
-  padding: 0.38rem 0;
+  padding: 0.36rem 0;
   font-family: var(--font-mono);
   font-size: 0.67rem;
   color: var(--ink-secondary);
@@ -116,12 +124,16 @@ textarea {
 }
 
 .telemetry-chip {
-  padding: 0.14rem 0.48rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  padding: 0.16rem 0.52rem;
   border-radius: 4px;
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   font-weight: 600;
   color: var(--ink-primary);
+  white-space: nowrap;
 }
 
 .telemetry-chip.highlight {
@@ -130,15 +142,52 @@ textarea {
   background: var(--btp-orange-soft);
 }
 
+.telemetry-chip.rtk-live {
+  border-color: rgba(13, 122, 95, 0.35);
+  background: var(--leica-green-soft);
+  color: var(--leica-green);
+}
+
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--leica-green);
+  display: inline-block;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.pulse-dot::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.5px solid var(--leica-green);
+  animation: rtkPulse 1.8s infinite ease-out;
+}
+
+@keyframes rtkPulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.1);
+    opacity: 0;
+  }
+}
+
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 950;
   height: 70px;
   display: flex;
   align-items: center;
-  background: rgba(246, 245, 240, 0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(246, 245, 240, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-subtle);
   transition: height 0.2s ease, box-shadow 0.2s ease;
 }
@@ -157,7 +206,7 @@ textarea {
     }
     to {
       height: 58px;
-      box-shadow: 0 6px 20px rgba(20, 26, 33, 0.07);
+      box-shadow: 0 6px 20px rgba(20, 26, 33, 0.08);
     }
   }
 }
@@ -180,12 +229,17 @@ textarea {
   width: 36px;
   height: 36px;
   flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.brand-lockup:hover .brand-mark-svg {
+  transform: rotate(15deg) scale(1.04);
 }
 
 .brand-title {
   font-family: var(--font-sans);
   font-weight: 800;
-  font-size: 1.12rem;
+  font-size: 1.14rem;
   letter-spacing: -0.02em;
   color: var(--ink-primary);
   line-height: 1.05;
@@ -207,23 +261,41 @@ textarea {
 .main-nav {
   display: flex;
   align-items: center;
-  gap: 0.15rem;
+  gap: 0.18rem;
   flex-wrap: nowrap;
 }
 
 .nav-link {
-  padding: 0.36rem 0.58rem;
+  position: relative;
+  padding: 0.38rem 0.62rem;
   border-radius: var(--radius-sm);
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--ink-secondary);
   white-space: nowrap;
-  transition: color 0.16s ease, background 0.16s ease;
+  transition: color 0.18s ease, background 0.18s ease;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link.active {
   color: var(--ink-primary);
-  background: rgba(20, 26, 33, 0.05);
+  background: rgba(13, 122, 95, 0.08);
+}
+
+.nav-link.active {
+  color: var(--leica-green);
+  font-weight: 700;
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0.62rem;
+  right: 0.62rem;
+  bottom: 2px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--leica-green);
 }
 
 .header-actions {
@@ -233,6 +305,293 @@ textarea {
   flex-shrink: 0;
 }
 
+.drawer-trigger-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 42px;
+  padding: 0.45rem 0.72rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  cursor: pointer;
+  transition: background 0.16s ease, border-color 0.16s ease;
+}
+
+.drawer-trigger-btn:hover,
+.drawer-trigger-btn:active {
+  background: var(--bg-section-alt);
+  border-color: var(--ink-primary);
+}
+
+/* ==========================================================================
+   NAVIGATION DRAWER NATIF (POPOVER MANUAL + SCROLL SNAP)
+   ========================================================================== */
+.Drawer {
+  --drawer-width: min(22em, 84dvw);
+  --drawer-backdrop: 0;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: 0;
+  overflow: visible;
+  z-index: 1200;
+}
+
+.Drawer:not(:popover-open):not(.is-open-fallback) {
+  display: none;
+}
+
+.Drawer::backdrop {
+  background: #141a21;
+  opacity: calc(var(--drawer-backdrop) * 0.55);
+}
+
+.Drawer-scroller {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--drawer-width) 100%;
+  width: 100%;
+  height: 100%;
+  overflow-x: scroll;
+  overscroll-behavior: none;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+}
+
+.Drawer-scroller::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .Drawer-scroller {
+    scroll-behavior: smooth;
+  }
+}
+
+.Drawer-scroller::after {
+  content: "";
+  scroll-snap-align: end;
+  scroll-initial-target: nearest;
+}
+
+.Drawer-sheet {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100svh;
+  background: var(--bg-page);
+  color: var(--ink-primary);
+  border-right: 1px solid var(--border-strong);
+  box-shadow: 16px 0 40px rgba(20, 26, 33, 0.22);
+  overflow-y: auto;
+  scroll-snap-align: start;
+  scrollbar-width: none;
+  padding: 1.1rem 1.15rem calc(1.25rem + var(--safe-bottom));
+  outline: none;
+}
+
+@supports (animation-timeline: scroll()) {
+  .Drawer {
+    timeline-scope: --drawer-fade;
+    animation: fade-drawer-backdrop linear both;
+    animation-timeline: --drawer-fade;
+  }
+
+  .Drawer-scroller {
+    scroll-timeline: --drawer-fade x;
+  }
+
+  @property --drawer-backdrop {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+  }
+
+  @keyframes fade-drawer-backdrop {
+    0% {
+      --drawer-backdrop: 1;
+    }
+    100% {
+      --drawer-backdrop: 0;
+    }
+  }
+}
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.drawer-close-btn {
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  background: var(--bg-card);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.drawer-status-card {
+  margin-top: 0.85rem;
+  padding: 0.7rem 0.8rem;
+  border-radius: var(--radius-md);
+  background: var(--leica-green-soft);
+  border: 1px solid rgba(13, 122, 95, 0.28);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--leica-green);
+  font-weight: 700;
+}
+
+.drawer-nav-list {
+  list-style: none;
+  margin-block: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.38rem;
+}
+
+.drawer-nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.72rem 0.85rem;
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  font-weight: 700;
+  font-size: 0.86rem;
+  color: var(--ink-primary);
+  transition: border-color 0.16s ease, transform 0.16s ease;
+}
+
+.drawer-nav-item:hover,
+.drawer-nav-item:active {
+  border-color: var(--btp-orange);
+  transform: translateX(2px);
+}
+
+.drawer-nav-item small {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+
+.drawer-nav-code {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: var(--btp-orange);
+  background: var(--btp-orange-soft);
+  padding: 0.18rem 0.45rem;
+  border-radius: 4px;
+}
+
+.drawer-footer-actions {
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border-subtle);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.drawer-footer-actions .full-span {
+  grid-column: span 2;
+}
+
+/* ==========================================================================
+   BARRE D'APPLICATION MOBILE FIXE EN BAS (ANDROID & IOS DOCK)
+   ========================================================================== */
+.mobile-bottom-nav {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 940;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border-strong);
+  box-shadow: 0 -6px 24px rgba(20, 26, 33, 0.08);
+  padding: 0.35rem 0.5rem calc(0.35rem + var(--safe-bottom));
+}
+
+.mobile-bottom-nav-inner {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.25rem;
+  max-width: 560px;
+  margin-inline: auto;
+}
+
+.bottom-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.18rem;
+  min-height: 48px;
+  padding: 0.25rem 0.2rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.64rem;
+  font-weight: 700;
+  color: var(--ink-muted);
+  text-align: center;
+  transition: color 0.16s ease, background 0.16s ease, transform 0.15s ease;
+}
+
+.bottom-tab svg {
+  width: 19px;
+  height: 19px;
+  stroke-width: 2.1;
+  transition: transform 0.18s ease;
+}
+
+.bottom-tab.active {
+  color: var(--leica-green);
+  background: var(--leica-green-soft);
+}
+
+.bottom-tab.active svg {
+  transform: translateY(-1px);
+}
+
+.bottom-tab.cta-tab {
+  background: var(--btp-orange);
+  color: #ffffff;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 12px rgba(200, 75, 40, 0.3);
+}
+
+.bottom-tab.cta-tab.active {
+  background: var(--btp-orange-hover);
+  color: #ffffff;
+}
+
 /* ==========================================================================
    BOUTONS
    ========================================================================== */
@@ -240,26 +599,34 @@ textarea {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
-  padding: 0.56rem 0.95rem;
+  gap: 0.42rem;
+  min-height: 42px;
+  padding: 0.56rem 0.98rem;
   border-radius: var(--radius-sm);
   font-size: 0.8rem;
   font-weight: 700;
   border: 1px solid transparent;
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.18s ease;
+  transition: transform 0.16s ease, background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
 }
 
-.btn-primary {
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary,
+.btn-gold {
   background: var(--btp-orange);
   color: #ffffff;
   border-color: var(--btp-orange);
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-gold:hover {
   background: var(--btp-orange-hover);
   border-color: var(--btp-orange-hover);
+  box-shadow: 0 6px 16px rgba(200, 75, 40, 0.24);
 }
 
 .btn-outline {
@@ -273,37 +640,41 @@ textarea {
   border-color: var(--ink-primary);
 }
 
-.btn-leica {
+.btn-leica,
+.btn-teal {
   background: var(--leica-green);
   color: #ffffff;
   border-color: var(--leica-green);
 }
 
-.btn-leica:hover {
+.btn-leica:hover,
+.btn-teal:hover {
   background: var(--leica-green-hover);
+  box-shadow: 0 6px 16px rgba(13, 122, 95, 0.24);
 }
 
 .btn-phone-chip {
   font-family: var(--font-mono);
   font-size: 0.74rem;
-  padding: 0.48rem 0.72rem;
+  padding: 0.48rem 0.74rem;
   background: var(--bg-card);
   border: 1px solid var(--border-strong);
   color: var(--ink-primary);
 }
 
 /* ==========================================================================
-   2. HERO (2 COLONNES CLAIRES & COMPACTES)
+   2. HERO + CONSOLE TOPOGRAPHIQUE 3D INTERACTIVE & MOSAÏQUE
    ========================================================================== */
 .hero-section {
-  padding: 2.5rem 0 3rem;
+  padding: 2.25rem 0 2.85rem;
   border-bottom: 1px solid var(--border-subtle);
+  container-type: inline-size;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.06fr 0.94fr;
-  gap: 2.25rem;
+  grid-template-columns: 1.04fr 0.96fr;
+  gap: 2rem;
   align-items: start;
 }
 
@@ -322,17 +693,18 @@ textarea {
 
 .eyebrow-tag::before {
   content: "";
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: var(--btp-orange);
+  box-shadow: 0 0 0 3px rgba(200, 75, 40, 0.18);
 }
 
 .hero-display-title {
   font-family: var(--font-sans);
   font-weight: 800;
-  font-size: clamp(1.75rem, 2.6vw, 2.4rem);
-  line-height: 1.15;
+  font-size: clamp(1.68rem, 1.1rem + 2.1vw, 2.42rem);
+  line-height: 1.14;
   letter-spacing: -0.025em;
   color: var(--ink-primary);
   margin-bottom: 0.85rem;
@@ -343,7 +715,7 @@ textarea {
 }
 
 .hero-subtitle {
-  font-size: 0.92rem;
+  font-size: clamp(0.88rem, 0.84rem + 0.25vw, 0.95rem);
   color: var(--ink-secondary);
   line-height: 1.58;
   margin-bottom: 1.25rem;
@@ -353,7 +725,7 @@ textarea {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
-  margin-bottom: 1.45rem;
+  margin-bottom: 1.4rem;
 }
 
 .hero-kpi-grid {
@@ -368,11 +740,35 @@ textarea {
   border-radius: var(--radius-md);
   padding: 0.85rem 0.95rem;
   box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-kpi-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--leica-green);
+  opacity: 0.75;
+}
+
+.hero-kpi-card:nth-child(odd)::before {
+  background: var(--btp-orange);
+}
+
+.hero-kpi-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-card);
 }
 
 .hero-kpi-value {
   font-weight: 800;
-  font-size: 1rem;
+  font-size: 1.02rem;
   color: var(--ink-primary);
   margin-bottom: 0.1rem;
 }
@@ -393,10 +789,126 @@ textarea {
   line-height: 1.4;
 }
 
+/* Console Géodésique Interactive (Fond Plan Clair Cadastral) */
+.hero-right-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.topo-console-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.console-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  background: var(--bg-section-alt);
+  border-bottom: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
+}
+
+.console-title-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.console-mode-group {
+  display: inline-flex;
+  background: var(--bg-card);
+  padding: 0.15rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  gap: 0.15rem;
+}
+
+.console-mode-btn {
+  padding: 0.28rem 0.58rem;
+  border-radius: 4px;
+  border: 0;
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 700;
+  color: var(--ink-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.console-mode-btn.active {
+  background: var(--leica-green);
+  color: #ffffff;
+}
+
+.console-stage {
+  position: relative;
+  height: 225px;
+  background: var(--bg-blueprint);
+  cursor: crosshair;
+  touch-action: pan-y;
+  overflow: hidden;
+}
+
+.console-stage canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.console-hint-pill {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.6rem;
+  padding: 0.18rem 0.5rem;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  pointer-events: none;
+}
+
+.console-hud-footer {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 0.9fr;
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+}
+
+.hud-metric small {
+  display: block;
+  font-size: 0.54rem;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+}
+
+.hud-metric strong {
+  color: var(--ink-primary);
+  font-weight: 700;
+}
+
 .hero-photo-mosaic {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem;
 }
 
 .hero-photo-card {
@@ -404,26 +916,19 @@ textarea {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--shadow-sm);
   cursor: zoom-in;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .hero-photo-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-hover);
-}
-
-.hero-photo-card.featured {
-  grid-column: span 2;
-}
-
-.hero-photo-card.featured .hero-photo-img-wrap {
-  height: 245px;
+  border-color: var(--btp-orange);
 }
 
 .hero-photo-img-wrap {
-  height: 160px;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
   background: #e5e2d9;
 }
@@ -433,16 +938,20 @@ textarea {
   height: 100%;
   object-fit: cover;
   object-position: center;
+  transition: transform 0.35s ease;
+}
+
+.hero-photo-card:hover .hero-photo-img-wrap img {
+  transform: scale(1.05);
 }
 
 .hero-photo-meta {
-  padding: 0.5rem 0.7rem;
+  padding: 0.42rem 0.55rem;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
+  flex-direction: column;
+  gap: 0.1rem;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.58rem;
   background: var(--bg-card);
   border-top: 1px solid var(--border-subtle);
 }
@@ -450,6 +959,9 @@ textarea {
 .hero-photo-meta strong {
   color: var(--ink-primary);
   font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .hero-photo-meta span {
@@ -463,6 +975,7 @@ textarea {
 .section {
   padding: 3.25rem 0;
   border-bottom: 1px solid var(--border-subtle);
+  container-type: inline-size;
 }
 
 .section-alt {
@@ -471,7 +984,7 @@ textarea {
 
 .section-head {
   max-width: 720px;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.65rem;
 }
 
 .section-head-split {
@@ -480,7 +993,7 @@ textarea {
   justify-content: space-between;
   gap: 1.25rem;
   flex-wrap: wrap;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.65rem;
 }
 
 .section-eyebrow {
@@ -506,7 +1019,7 @@ textarea {
 
 .section-title {
   font-weight: 800;
-  font-size: clamp(1.38rem, 2.1vw, 1.82rem);
+  font-size: clamp(1.35rem, 1rem + 1.4vw, 1.84rem);
   line-height: 1.18;
   letter-spacing: -0.02em;
   color: var(--ink-primary);
@@ -520,7 +1033,7 @@ textarea {
 }
 
 /* ==========================================================================
-   3. TERRITOIRE & ORGANISATION 2 BRIGADES (CARTES CLAIRES & PLANS TECHNIQUES)
+   3. TERRITOIRE INTERACTIF & ORGANISATION 2 BRIGADES
    ========================================================================== */
 .bento-2col-asymmetric {
   display: grid;
@@ -545,6 +1058,7 @@ textarea {
   justify-content: space-between;
   gap: 0.5rem;
   margin-bottom: 0.55rem;
+  flex-wrap: wrap;
 }
 
 .meta-code {
@@ -593,33 +1107,125 @@ textarea {
   line-height: 1.5;
 }
 
-/* Cadre de plan topographique clair (Papier millimétré d'ingénierie) */
+/* Sélecteur de cadrage cartographique (idéal sur mobile & tablette) */
+.map-view-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.map-zoom-tabs {
+  display: inline-flex;
+  background: var(--bg-page);
+  padding: 0.18rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  gap: 0.18rem;
+}
+
+.map-zoom-btn {
+  padding: 0.3rem 0.62rem;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 700;
+  color: var(--ink-secondary);
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+
+.map-zoom-btn.active {
+  background: var(--ink-primary);
+  color: #ffffff;
+}
+
 .blueprint-stage {
   width: 100%;
   background: var(--bg-blueprint);
   border: 1px solid var(--border-blueprint);
   border-radius: var(--radius-md);
-  margin-block: 0.75rem;
+  margin-block: 0.65rem;
   padding: 0.45rem;
   overflow: hidden;
+  position: relative;
 }
 
 .blueprint-stage svg {
   width: 100%;
   height: auto;
+  transition: viewBox 0.35s ease;
+}
+
+/* Animations SVG Géodésiques & CAD */
+@media (prefers-reduced-motion: no-preference) {
+  .svg-laser-line {
+    stroke-dasharray: 5 3;
+    animation: laserFlow 14s linear infinite;
+  }
+
+  .svg-radar-ring {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: svgPulseRing 2.4s ease-out infinite;
+  }
+
+  .svg-scan-beam {
+    animation: svgSweepY 4.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes laserFlow {
+    to {
+      stroke-dashoffset: -120;
+    }
+  }
+
+  @keyframes svgPulseRing {
+    0% {
+      transform: scale(0.75);
+      opacity: 0.9;
+    }
+    100% {
+      transform: scale(1.75);
+      opacity: 0;
+    }
+  }
+
+  @keyframes svgSweepY {
+    0% {
+      transform: translateY(-18px);
+    }
+    100% {
+      transform: translateY(22px);
+    }
+  }
+}
+
+.map-node-group {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.map-node-group:hover circle {
+  r: 6.5px;
 }
 
 .wilaya-pills-strip {
   display: flex;
   flex-wrap: wrap;
   gap: 0.38rem;
+  margin-bottom: 0.65rem;
 }
 
 .wilaya-pill {
   font-family: var(--font-mono);
   font-size: 0.66rem;
   font-weight: 600;
-  padding: 0.22rem 0.55rem;
+  padding: 0.34rem 0.65rem;
   border-radius: 4px;
   background: var(--bg-page);
   border: 1px solid var(--border-subtle);
@@ -627,6 +1233,17 @@ textarea {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+
+.wilaya-pill:hover,
+.wilaya-pill.active {
+  border-color: var(--leica-green);
+  background: var(--leica-green-soft);
+  color: var(--leica-green);
+  font-weight: 700;
+  transform: translateY(-1px);
 }
 
 .wilaya-pill i {
@@ -643,6 +1260,15 @@ textarea {
   font-weight: 700;
 }
 
+.wilaya-pill.hq.active {
+  background: var(--btp-orange);
+  color: #ffffff;
+}
+
+.wilaya-pill.hq.active i {
+  background: #ffffff;
+}
+
 .wilaya-pill.hq i {
   background: var(--btp-orange);
 }
@@ -651,8 +1277,31 @@ textarea {
   background: var(--cad-blue);
 }
 
+.wilaya-live-readout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-md);
+  background: var(--bg-page);
+  border: 1px solid var(--border-strong);
+  font-size: 0.76rem;
+}
+
+.wilaya-live-readout strong {
+  font-family: var(--font-mono);
+  color: var(--ink-primary);
+  font-size: 0.74rem;
+}
+
+.wilaya-live-readout span {
+  color: var(--ink-secondary);
+}
+
 /* ==========================================================================
-   4. LES 6 PRESTATIONS TOPOGRAPHIQUES (PLANS CAD DÉTAILLÉS SUR PAPIER CLAIR)
+   4. LES 6 PRESTATIONS TOPOGRAPHIQUES (PLANS CAD ANIMÉS & INTERACTIFS)
    ========================================================================== */
 .services-grid-3col {
   display: grid;
@@ -664,26 +1313,27 @@ textarea {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
-  padding: 1.2rem;
+  padding: 1.15rem;
   box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
 }
 
 .service-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-hover);
-  border-color: var(--border-strong);
+  border-color: var(--leica-green);
 }
 
 .service-blueprint-box {
   background: var(--bg-blueprint);
   border: 1px solid var(--border-blueprint);
   border-radius: var(--radius-md);
-  margin-bottom: 0.9rem;
+  margin-bottom: 0.85rem;
   overflow: hidden;
+  position: relative;
 }
 
 .service-blueprint-box svg {
@@ -698,7 +1348,7 @@ textarea {
   margin-bottom: 0.85rem;
   display: flex;
   flex-direction: column;
-  gap: 0.28rem;
+  gap: 0.3rem;
 }
 
 .service-deliverables li {
@@ -721,22 +1371,32 @@ textarea {
 }
 
 .service-card-footer {
-  padding-top: 0.7rem;
+  padding-top: 0.72rem;
   border-top: 1px solid var(--border-subtle);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.5rem;
   font-family: var(--font-mono);
   font-size: 0.68rem;
 }
 
 .service-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.32rem 0.62rem;
+  border-radius: 4px;
+  background: var(--btp-orange-soft);
+  border: 1px solid rgba(200, 75, 40, 0.28);
   font-weight: 700;
   color: var(--btp-orange);
+  transition: all 0.16s ease;
 }
 
 .service-link-btn:hover {
-  text-decoration: underline;
+  background: var(--btp-orange);
+  color: #ffffff;
 }
 
 .service-format-tag {
@@ -745,17 +1405,18 @@ textarea {
 }
 
 /* ==========================================================================
-   5. RÉFÉRENCES CHANTIERS & GRANDS COMPTES (CARTES CLAIRES COHÉRENTES)
+   5. RÉFÉRENCES CHANTIERS & GRANDS COMPTES (FILTRAGE FLUIDE)
    ========================================================================== */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-bottom: 1.4rem;
+  gap: 0.42rem;
+  margin-bottom: 1.35rem;
 }
 
 .filter-btn {
-  padding: 0.4rem 0.82rem;
+  min-height: 38px;
+  padding: 0.42rem 0.88rem;
   border-radius: var(--radius-sm);
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
@@ -764,6 +1425,7 @@ textarea {
   font-weight: 600;
   color: var(--ink-secondary);
   cursor: pointer;
+  white-space: nowrap;
   transition: all 0.16s ease;
 }
 
@@ -789,7 +1451,7 @@ textarea {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, opacity 0.22s ease;
 }
 
 .ref-card:hover {
@@ -803,7 +1465,7 @@ textarea {
 
 .ref-photo-banner {
   position: relative;
-  height: 180px;
+  aspect-ratio: 16 / 9;
   border-radius: var(--radius-md);
   overflow: hidden;
   border: 1px solid var(--border-subtle);
@@ -821,7 +1483,7 @@ textarea {
 }
 
 .ref-card:hover .ref-photo-banner img {
-  transform: scale(1.03);
+  transform: scale(1.04);
 }
 
 .ref-hud-tag {
@@ -830,7 +1492,7 @@ textarea {
   bottom: 0.55rem;
   z-index: 2;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.61rem;
   font-weight: 700;
   padding: 0.2rem 0.5rem;
   border-radius: 4px;
@@ -879,7 +1541,7 @@ textarea {
 }
 
 /* ==========================================================================
-   6. PHOTOTHÈQUE CHANTIERS RÉELS (CARTES ARCHITECTURALES CLAIRES)
+   6. PHOTOTHÈQUE CHANTIERS RÉELS
    ========================================================================== */
 .terrain-bento-gallery {
   display: grid;
@@ -896,18 +1558,20 @@ textarea {
   cursor: zoom-in;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .terrain-card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-hover);
+  border-color: var(--btp-orange);
 }
 
 .terrain-img-box {
-  height: 195px;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   background: #e5e2d9;
+  position: relative;
 }
 
 .terrain-img-box img {
@@ -969,33 +1633,40 @@ textarea {
 }
 
 /* ==========================================================================
-   7. QUALIFICATEUR DE DOSSIER & CONTACT (100% CLAIR & COHÉRENT)
+   7. QUALIFICATEUR DE DOSSIER INTERACTIF & CONTACT + STUDIO CARTE DE VISITE
    ========================================================================== */
 .simulator-bento {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
-  gap: 1.5rem;
+  gap: 1.4rem;
   background: var(--bg-card);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-lg);
-  padding: 1.5rem;
+  padding: 1.45rem;
   box-shadow: var(--shadow-card);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.simulator-bento.flash-highlight {
+  border-color: var(--btp-orange);
+  box-shadow: 0 0 0 4px rgba(200, 75, 40, 0.18), var(--shadow-hover);
 }
 
 .sim-pills {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.45rem;
-  margin-bottom: 1.15rem;
+  margin-bottom: 1.05rem;
 }
 
 .sim-pill {
-  padding: 0.6rem 0.8rem;
+  min-height: 44px;
+  padding: 0.58rem 0.78rem;
   border-radius: var(--radius-sm);
   background: var(--bg-page);
   border: 1px solid var(--border-subtle);
   text-align: left;
-  font-size: 0.8rem;
+  font-size: 0.79rem;
   font-weight: 600;
   color: var(--ink-secondary);
   cursor: pointer;
@@ -1007,29 +1678,60 @@ textarea {
   background: var(--btp-orange-soft);
   border-color: var(--btp-orange);
   color: var(--ink-primary);
+  font-weight: 700;
 }
 
 .sim-range {
   width: 100%;
+  height: 8px;
   accent-color: var(--btp-orange);
   cursor: pointer;
+  margin-bottom: 0.55rem;
+}
+
+.sim-presets-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.38rem;
+}
+
+.sim-preset-chip {
+  padding: 0.26rem 0.58rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-page);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.sim-preset-chip:hover,
+.sim-preset-chip.active {
+  border-color: var(--leica-green);
+  background: var(--leica-green-soft);
+  color: var(--leica-green);
+  font-weight: 700;
 }
 
 .sim-display-card {
   background: var(--bg-blueprint);
   border: 1px solid var(--border-blueprint);
   border-radius: var(--radius-md);
-  padding: 1.35rem;
+  padding: 1.3rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: transform 0.2s ease;
 }
 
 .sim-kpi-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.6rem;
-  margin-block: 0.9rem;
+  margin-block: 0.85rem;
 }
 
 .sim-kpi-cell {
@@ -1042,7 +1744,7 @@ textarea {
 .sim-kpi-cell small {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.59rem;
   color: var(--ink-muted);
   text-transform: uppercase;
   margin-bottom: 0.12rem;
@@ -1050,13 +1752,13 @@ textarea {
 
 .sim-kpi-cell strong {
   font-family: var(--font-mono);
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   color: var(--leica-green);
 }
 
 .contact-bento {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-columns: 0.92fr 1.08fr;
   gap: 1.35rem;
 }
 
@@ -1064,15 +1766,15 @@ textarea {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
-  padding: 1.5rem;
+  padding: 1.45rem;
   box-shadow: var(--shadow-card);
 }
 
 .channel-stack {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
-  margin-block: 1.1rem;
+  gap: 0.6rem;
+  margin-block: 1rem;
 }
 
 .channel-row {
@@ -1083,11 +1785,40 @@ textarea {
   border-radius: var(--radius-md);
   background: var(--bg-page);
   border: 1px solid var(--border-subtle);
-  transition: border-color 0.16s ease;
+  transition: border-color 0.16s ease, transform 0.16s ease;
 }
 
 .channel-row:hover {
   border-color: var(--btp-orange);
+  transform: translateX(2px);
+}
+
+/* Mini Carte QR Interactive dans Contact */
+.qr-contact-box {
+  margin-top: 1rem;
+  padding: 0.85rem;
+  border-radius: var(--radius-md);
+  background: var(--bg-blueprint);
+  border: 1px solid var(--border-blueprint);
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.qr-svg-holder {
+  width: 78px;
+  height: 78px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  background: #ffffff;
+  padding: 4px;
+}
+
+.qr-svg-holder svg {
+  width: 100%;
+  height: 100%;
 }
 
 .form-row-2 {
@@ -1119,12 +1850,13 @@ textarea {
 .field select,
 .field textarea {
   width: 100%;
+  min-height: 44px;
   padding: 0.58rem 0.75rem;
   border-radius: var(--radius-sm);
   background: var(--bg-page);
   border: 1px solid var(--border-strong);
   color: var(--ink-primary);
-  font-size: 0.84rem;
+  font-size: 1rem;
 }
 
 .field input:focus,
@@ -1161,19 +1893,26 @@ textarea:user-valid {
   border-color: var(--leica-green);
 }
 
-@supports (animation-timeline: view()) and (animation-range: entry) {
-  .scroll-reveal {
-    animation: subtleEntry linear both;
-    animation-timeline: view();
-    animation-range: entry 0% cover 18%;
-  }
-
-  @keyframes subtleEntry {
-    from {
-      transform: translateY(8px);
+/* ==========================================================================
+   8. SCROLL-DRIVEN REVEAL ANIMATIONS (MODERN WEB GUIDANCE)
+   ========================================================================== */
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    @keyframes scrollSlideIn {
+      from {
+        opacity: 0.15;
+        transform: translateY(20px) scale(0.985);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
-    to {
-      transform: translateY(0);
+
+    .scroll-reveal {
+      animation: scrollSlideIn linear backwards;
+      animation-timeline: view(block);
+      animation-range: entry 0% cover 22%;
     }
   }
 }
@@ -1186,83 +1925,430 @@ textarea:user-valid {
   font-size: 0.8rem;
 }
 
-/* Lightbox Modal (Clair & Technique) */
+/* ==========================================================================
+   9. LIGHTBOX PHOTO INTERACTIVE (SWIPE MOBILE + NAVIGATION)
+   ========================================================================== */
 .photo-lightbox {
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-lg);
   background: var(--bg-card);
   color: var(--ink-primary);
-  padding: 1.25rem;
-  max-width: min(92vw, 1020px);
-  max-height: 90vh;
+  padding: 1.1rem;
+  width: min(94dvw, 1020px);
+  max-height: 92dvh;
   margin: auto;
-  box-shadow: 0 25px 70px rgba(20, 26, 33, 0.35);
+  box-shadow: 0 25px 70px rgba(20, 26, 33, 0.42);
 }
 
 .photo-lightbox::backdrop {
-  background: rgba(20, 26, 33, 0.65);
+  background: rgba(20, 26, 33, 0.72);
   backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .lightbox-frame {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 0.75rem;
 }
 
 .lightbox-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .lightbox-title {
-  font-size: 1.05rem;
+  font-size: clamp(0.92rem, 0.85rem + 0.4vw, 1.08rem);
   font-weight: 800;
   margin-top: 0.2rem;
 }
 
 .lightbox-img-wrap {
+  position: relative;
   border-radius: var(--radius-md);
   overflow: hidden;
   border: 1px solid var(--border-subtle);
-  background: var(--bg-page);
-  max-height: 74vh;
+  background: #141a21;
+  max-height: 68dvh;
   display: flex;
   align-items: center;
   justify-content: center;
+  touch-action: pan-y;
 }
 
 .lightbox-img-wrap img {
   max-width: 100%;
-  max-height: 74vh;
+  max-height: 68dvh;
   object-fit: contain;
 }
 
-@media (max-width: 1080px) {
-  .hero-grid,
-  .bento-2col-asymmetric,
-  .services-grid-3col,
-  .ref-bento-grid,
-  .simulator-bento,
-  .contact-bento {
-    grid-template-columns: 1fr;
-  }
+.lightbox-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
 
-  .terrain-bento-gallery {
-    grid-template-columns: repeat(2, 1fr);
+.lightbox-counter {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink-secondary);
+}
+
+/* ==========================================================================
+   10. STUDIO CARTE DE VISITE (COMPATIBILITÉ CARTE-DE-VISITE.HTML)
+   ========================================================================== */
+.business-card-sheet {
+  position: relative;
+  width: min(420px, 90dvw);
+  aspect-ratio: 85 / 55;
+  border-radius: 12px;
+  padding: 1.2rem 1.35rem;
+  background: #0d131c;
+  color: #f8fafc;
+  border: 1px solid rgba(223, 192, 122, 0.35);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.business-card-sheet.theme-ivory {
+  background: #f9f8f3;
+  color: #141a21;
+  border-color: #c5bfb0;
+}
+
+.business-card-sheet.theme-emerald {
+  background: #072922;
+  color: #f0fdf4;
+  border-color: #0d7a5f;
+}
+
+.bcard-topo-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.bcard-layer {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bcard-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.bcard-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.bcard-brand-word {
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+
+.bcard-brand-word span {
+  color: #2dd4bf;
+}
+
+.bcard-brand-sub {
+  font-family: var(--font-mono);
+  font-size: 0.54rem;
+  opacity: 0.8;
+}
+
+.bcard-coord-stamp {
+  font-family: var(--font-mono);
+  font-size: 0.54rem;
+  text-align: right;
+  opacity: 0.85;
+}
+
+.bcard-person-name {
+  font-weight: 800;
+  font-size: 1.12rem;
+}
+
+.bcard-person-role {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: #dfc07a;
+}
+
+.business-card-sheet.theme-ivory .bcard-person-role {
+  color: var(--btp-orange);
+}
+
+.bcard-footer-contacts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25rem 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+}
+
+.bcard-c-line {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.bcard-c-line.full-span {
+  grid-column: span 2;
+}
+
+.bcard-verso-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.bcard-domains-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.3rem;
+  flex: 1;
+}
+
+.bcard-domain-item {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  padding: 0.22rem 0.45rem;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.business-card-sheet.theme-ivory .bcard-domain-item {
+  background: #ffffff;
+  border-color: #d5d0c3;
+}
+
+.bcard-qr-box {
+  width: 76px;
+  height: 76px;
+  background: #ffffff;
+  padding: 4px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.bcard-verso-bottom {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  opacity: 0.85;
+}
+
+/* ==========================================================================
+   11. RESPONSIVE TABLETTE & SMARTPHONE (ERGONOMIE APPLICATION ANDROID / IOS)
+   ========================================================================== */
+@media (max-width: 1080px) {
+  body {
+    padding-bottom: calc(68px + var(--safe-bottom));
   }
 
   .main-nav {
     display: none;
   }
+
+  .drawer-trigger-btn {
+    display: inline-flex;
+  }
+
+  .mobile-bottom-nav {
+    display: block;
+  }
+
+  .hero-grid,
+  .bento-2col-asymmetric,
+  .simulator-bento,
+  .contact-bento {
+    grid-template-columns: 1fr;
+  }
+
+  .services-grid-3col,
+  .ref-bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .terrain-bento-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-@media (max-width: 680px) {
+@media (max-width: 720px) {
+  .container {
+    width: min(100%, 94dvw);
+  }
+
+  /* Barre télémétrique fluide sur une seule ligne scrollable au doigt */
+  .top-telemetry-inner {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 1px;
+  }
+
+  .top-telemetry-inner::-webkit-scrollbar {
+    display: none;
+  }
+
+  .telemetry-pills {
+    flex-wrap: nowrap;
+  }
+
+  .telemetry-coords-desktop {
+    display: none;
+  }
+
+  .site-header {
+    height: 62px;
+  }
+
+  .header-actions .btn-primary {
+    display: none;
+  }
+
+  .btn-phone-chip {
+    padding: 0.42rem 0.58rem;
+    font-size: 0.7rem;
+  }
+
+  .hero-section {
+    padding: 1.35rem 0 1.9rem;
+  }
+
+  .hero-cta-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .hero-cta-row .btn-primary {
+    grid-column: span 2;
+  }
+
+  .hero-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.55rem;
+  }
+
+  .hero-kpi-card {
+    padding: 0.7rem 0.75rem;
+  }
+
+  .hero-kpi-value {
+    font-size: 0.92rem;
+  }
+
+  .hero-kpi-desc {
+    font-size: 0.71rem;
+  }
+
+  .console-stage {
+    height: 195px;
+  }
+
+  .console-hud-footer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.35rem 0.6rem;
+  }
+
+  .hero-photo-mosaic {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.45rem;
+  }
+
+  .hero-photo-meta span {
+    display: none;
+  }
+
+  .section {
+    padding: 2.2rem 0;
+  }
+
+  /* Barre de filtres scrollable horizontalement façon app mobile */
+  .filter-bar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 0.25rem;
+    margin-inline: -3dvw;
+    padding-inline: 3dvw;
+  }
+
+  .filter-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .services-grid-3col,
+  .ref-bento-grid,
+  .form-row-2 {
+    grid-template-columns: 1fr;
+  }
+
+  /* Galerie terrain en 2 colonnes compactes façon grille iOS/Android */
+  .terrain-bento-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
+  }
+
+  .terrain-caption {
+    padding: 0.55rem 0.65rem;
+  }
+
+  .terrain-caption strong {
+    font-size: 0.78rem;
+  }
+
+  .terrain-caption span {
+    font-size: 0.67rem;
+  }
+
+  .simulator-bento,
+  .contact-card,
+  .bento-card {
+    padding: 1.05rem;
+  }
+
+  .sim-pills {
+    grid-template-columns: 1fr;
+  }
+
+  .qr-contact-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 400px) {
+  .brand-sub {
+    display: none;
+  }
+
   .hero-kpi-grid,
-  .form-row-2,
-  .sim-pills,
   .terrain-bento-gallery {
     grid-template-columns: 1fr;
   }
