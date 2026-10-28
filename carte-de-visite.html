@@ -2,12 +2,12 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Carte de Visite (85x55 mm) · Cabinet GeoMed · Mohamed Amine Belarbia</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20261028-v4">
   <style>
     body {
       padding-top: 0;
@@ -17,8 +17,8 @@
     }
 
     .print-toolbar {
-      background: rgba(246, 245, 240, 0.95);
-      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(246, 245, 240, 0.96);
+      border-bottom: 1px solid var(--border-strong);
       padding: 0.85rem 0;
       position: sticky;
       top: 0;
@@ -47,9 +47,10 @@
       position: relative;
       padding: 12px;
       border: 1px dashed var(--border-strong);
-      border-radius: 16px;
+      border-radius: 14px;
       background: var(--bg-card);
       max-width: 100%;
+      width: 100%;
     }
 
     .crop-frame::before,
@@ -62,15 +63,189 @@
       line-height: 1;
     }
 
-    .crop-frame::before { top: 2px; left: 4px; }
-    .crop-frame::after { bottom: 2px; right: 4px; }
+    .crop-frame::before { top: 2px; left: 5px; }
+    .crop-frame::after { bottom: 2px; right: 5px; }
 
     .print-sheet-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
       gap: 1.75rem;
-      width: min(1080px, 94dvw);
+      width: min(1040px, 94vw);
       justify-items: center;
+    }
+
+    .business-card-sheet {
+      position: relative;
+      aspect-ratio: 85 / 55;
+      width: 100%;
+      border-radius: 10px;
+      padding: clamp(1rem, 2.8vw, 1.45rem);
+      overflow: hidden;
+      background: #ffffff;
+      color: var(--ink-primary);
+      border: 1px solid var(--border-strong);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .business-card-sheet.theme-ivory {
+      background: #faf9f5;
+      border-color: #c8c3b4;
+    }
+
+    .business-card-sheet.theme-emerald {
+      background: #f0f9f6;
+      border-color: #0d7a5f;
+    }
+
+    .bcard-topo-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0.45;
+    }
+
+    .bcard-layer {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .bcard-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .bcard-brand-row {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .bcard-brand-word {
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      color: var(--ink-primary);
+      line-height: 1.05;
+    }
+
+    .bcard-brand-word span {
+      color: var(--leica-green);
+    }
+
+    .bcard-brand-sub {
+      font-family: var(--font-mono);
+      font-size: 0.56rem;
+      color: var(--ink-secondary);
+      letter-spacing: 0.05em;
+      margin-top: 0.1rem;
+    }
+
+    .bcard-coord-stamp {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      font-weight: 700;
+      color: var(--btp-orange);
+      text-align: right;
+      line-height: 1.35;
+    }
+
+    .bcard-identity-center {
+      margin-block: 0.35rem;
+      padding-left: 0.65rem;
+      border-left: 3px solid var(--leica-green);
+    }
+
+    .bcard-person-name {
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: var(--ink-primary);
+    }
+
+    .bcard-person-role {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      font-weight: 700;
+      color: var(--btp-orange);
+      margin-top: 0.1rem;
+    }
+
+    .bcard-footer-contacts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.25rem 0.6rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border-light);
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+    }
+
+    .bcard-c-line {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .bcard-c-line.full-span {
+      grid-column: span 2;
+    }
+
+    .bcard-verso-body {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      margin-block: 0.35rem;
+    }
+
+    .bcard-domains-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.3rem;
+      flex: 1;
+    }
+
+    .bcard-domain-item {
+      background: var(--bg-paper);
+      border: 1px solid var(--border-light);
+      border-left: 2px solid var(--leica-green);
+      padding: 0.24rem 0.45rem;
+      border-radius: 4px;
+      font-size: 0.66rem;
+      font-weight: 700;
+      color: var(--ink-primary);
+    }
+
+    .bcard-qr-box {
+      width: 78px;
+      height: 78px;
+      flex-shrink: 0;
+      background: #ffffff;
+      border: 1px solid var(--border-strong);
+      border-radius: 6px;
+      padding: 4px;
+    }
+
+    .bcard-verso-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.45rem;
+      border-top: 1px solid var(--border-light);
+      font-family: var(--font-mono);
+      font-size: 0.56rem;
+      font-weight: 700;
+      color: var(--ink-secondary);
     }
 
     .a4-multi-grid {
@@ -80,7 +255,8 @@
       padding: 12mm;
       background: #ffffff;
       border-radius: 10px;
-      box-shadow: 0 28px 65px rgba(0, 0, 0, 0.75);
+      border: 1px solid var(--border-strong);
+      box-shadow: var(--shadow-card);
     }
 
     .a4-multi-grid .business-card-sheet {
@@ -121,7 +297,6 @@
         color: #000000 !important;
       }
 
-      body::before,
       .print-toolbar,
       .no-print {
         display: none !important;
@@ -150,16 +325,6 @@
         padding: 4.2mm 4.8mm !important;
         box-shadow: none !important;
       }
-
-      .bcard-person-name { font-size: 10pt !important; }
-      .bcard-person-role { font-size: 5.8pt !important; }
-      .bcard-footer-contacts { font-size: 5.5pt !important; }
-      .bcard-brand-word { font-size: 11.5pt !important; }
-      .bcard-brand-sub { font-size: 4.2pt !important; }
-      .bcard-coord-stamp { font-size: 4.5pt !important; }
-      .bcard-qr-box { width: 58px !important; height: 58px !important; padding: 3px !important; }
-      .bcard-domain-item { font-size: 5.2pt !important; padding: 2px 4px !important; }
-      .bcard-verso-bottom { font-size: 4.8pt !important; }
     }
   </style>
 </head>
@@ -168,9 +333,9 @@
   <header class="print-toolbar">
     <div class="container toolbar-flex">
       <div>
-        <strong style="font-family:var(--font-display); font-size:1.05rem;">Planche Carte de Visite (85 x 55 mm) · Cabinet GeoMed</strong>
-        <span style="display:block; font-family:var(--font-mono); font-size:0.68rem; color:var(--gold);">
-          BELARBIA MOHAMED AMINE · 2 BRIGADES · 5 TOPOGRAPHES · GEOMEDZ.COM
+        <strong style="font-size:1.02rem; font-weight:800;">Planche Carte de Visite (85 x 55 mm) · Cabinet GeoMed</strong>
+        <span style="display:block; font-family:var(--font-mono); font-size:0.68rem; color:var(--leica-green); font-weight:700;">
+          MOHAMED AMINE BELARBIA · 16 ANS D'EXPÉRIENCE · 2 BRIGADES · 5 TOPOGRAPHES
         </span>
       </div>
 
@@ -178,9 +343,8 @@
         <a href="index.html" class="btn btn-outline">← Retour au site</a>
         <button type="button" id="btn-mode-hd" class="filter-btn active">Recto / Verso HD</button>
         <button type="button" id="btn-mode-a4" class="filter-btn">Planche A4 (8 Cartes)</button>
-        <button type="button" class="filter-btn active" data-bcard-theme="obsidian">01. Obsidian &amp; Or</button>
-        <button type="button" class="filter-btn" data-bcard-theme="ivory">02. Ivoire Cadastral</button>
-        <button type="button" class="filter-btn" data-bcard-theme="emerald">03. Émeraude LiDAR</button>
+        <button type="button" class="filter-btn active" data-bcard-theme="ivory">01. Papier Cadastral</button>
+        <button type="button" class="filter-btn" data-bcard-theme="emerald">02. Vert Optique Leica</button>
         <button type="button" onclick="window.print()" class="btn btn-primary">
           <span>Imprimer / PDF 300 DPI</span>
         </button>
@@ -190,25 +354,23 @@
 
   <main class="studio-workspace">
     <div class="print-sheet-grid" id="studio-pair">
-      <div>
-        <div class="visual-pill-code no-print" style="text-align:center; margin-bottom:0.5rem;">RECTO · 85 x 55 MM</div>
+      <div style="width:100%;">
+        <div class="meta-code no-print" style="text-align:center; margin-bottom:0.5rem;">RECTO · 85 x 55 MM</div>
         <div class="crop-frame">
-          <article class="business-card-sheet">
+          <article class="business-card-sheet theme-ivory">
             <svg class="bcard-topo-svg" viewBox="0 0 420 270" fill="none" aria-hidden="true">
-              <path d="M240,-20 C310,40 320,160 440,220" stroke="#DFC07A" stroke-width="1"/>
-              <path d="M270,-30 C340,35 350,145 450,200" stroke="#DFC07A" stroke-width="1.2"/>
-              <path d="M300,-40 C370,30 380,130 460,180" stroke="#38BDF8" stroke-width="1"/>
-              <circle cx="355" cy="95" r="55" stroke="#DFC07A" stroke-width="0.7" stroke-dasharray="2 4"/>
-              <circle cx="355" cy="95" r="32" stroke="#38BDF8" stroke-width="0.7"/>
+              <path d="M240,-20 C310,40 320,160 440,220" stroke="#C84B28" stroke-width="0.9"/>
+              <path d="M270,-30 C340,35 350,145 450,200" stroke="#0D7A5F" stroke-width="1"/>
+              <circle cx="355" cy="95" r="52" stroke="#0D7A5F" stroke-width="0.7" stroke-dasharray="3 3"/>
             </svg>
 
             <div class="bcard-layer">
               <div class="bcard-head">
                 <div class="bcard-brand-row">
-                  <svg width="34" height="34" viewBox="0 0 64 64" fill="none">
-                    <circle cx="32" cy="32" r="26" stroke="#DFC07A" stroke-width="1.5" stroke-dasharray="2 3"/>
-                    <polygon points="32,12 49,22 49,42 32,52 15,42 15,22" stroke="#DFC07A" stroke-width="2" fill="rgba(223,192,122,0.1)"/>
-                    <circle cx="32" cy="32" r="4.5" fill="#38BDF8"/>
+                  <svg width="34" height="34" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                    <rect x="4" y="4" width="56" height="56" rx="12" fill="#FFFFFF" stroke="#0D7A5F" stroke-width="2.2"/>
+                    <polygon points="32,13 48,22 48,42 32,51 16,42 16,22" stroke="#141A21" stroke-width="1.6" fill="#EEF8F5"/>
+                    <circle cx="32" cy="32" r="4.5" fill="#C84B28"/>
                   </svg>
                   <div>
                     <div class="bcard-brand-word">GEO<span>MED</span></div>
@@ -216,27 +378,27 @@
                   </div>
                 </div>
                 <div class="bcard-coord-stamp">
-                  16 ANS D'ACTIVITÉ<br>2 BRIGADES · 5 TOPOGRAPHES
+                  16 ANS D'EXPÉRIENCE<br>2 BRIGADES · 5 TOPOGRAPHES
                 </div>
               </div>
 
               <div class="bcard-identity-center">
                 <div class="bcard-person-name">Belarbia Mohamed Amine</div>
-                <div class="bcard-person-role">Directeur &amp; Manager de Projets Topographiques</div>
+                <div class="bcard-person-role">Directeur &amp; Manager Grands Projets Topographiques</div>
               </div>
 
               <div class="bcard-footer-contacts">
                 <div class="bcard-c-line">
-                  <span style="color:var(--gold);">TEL</span>
+                  <strong style="color:var(--btp-orange);">TEL</strong>
                   <span>06 61 43 11 74 / 05 58 42 62 57</span>
                 </div>
                 <div class="bcard-c-line">
-                  <span style="color:var(--gold);">WEB</span>
+                  <strong style="color:var(--leica-green);">WEB</strong>
                   <span>geomedz.com · belarbia.85@gmail.com</span>
                 </div>
                 <div class="bcard-c-line full-span">
-                  <span style="color:var(--gold);">SIÈGE</span>
-                  <span>Haï Akid Lotfi · 31000 Oran, Algérie</span>
+                  <strong style="color:var(--leica-green);">SIÈGE</strong>
+                  <span>Haï Akid Lotfi · 31000 Oran, Algérie (WGS84 : 35.7243°N, 0.5911°W)</span>
                 </div>
               </div>
             </div>
@@ -244,22 +406,22 @@
         </div>
       </div>
 
-      <div>
-        <div class="visual-pill-code no-print" style="text-align:center; margin-bottom:0.5rem;">VERSO · 85 x 55 MM</div>
+      <div style="width:100%;">
+        <div class="meta-code no-print" style="text-align:center; margin-bottom:0.5rem;">VERSO · 85 x 55 MM</div>
         <div class="crop-frame">
-          <article class="business-card-sheet">
+          <article class="business-card-sheet theme-ivory">
             <svg class="bcard-topo-svg" viewBox="0 0 420 270" fill="none" aria-hidden="true">
-              <path d="M-20,60 C80,110 140,210 260,290" stroke="#DFC07A" stroke-width="1"/>
-              <path d="M-30,100 C70,150 120,230 230,300" stroke="#38BDF8" stroke-width="1"/>
+              <path d="M-20,60 C80,110 140,210 260,290" stroke="#0D7A5F" stroke-width="0.9"/>
+              <path d="M-30,100 C70,150 120,230 230,300" stroke="#C84B28" stroke-width="0.9"/>
             </svg>
 
             <div class="bcard-layer">
               <div class="bcard-head">
                 <div>
-                  <div class="bcard-brand-word" style="font-size:1.05rem;">GEO<span>MED</span> · ALGÉRIE</div>
+                  <div class="bcard-brand-word" style="font-size:1.02rem;">GEO<span>MED</span> · ALGÉRIE</div>
                   <div class="bcard-brand-sub">ORAN · ALGER · BLIDA · TLEMCEN · TIARET · SUD ALGÉRIEN</div>
                 </div>
-                <span style="font-family:var(--font-mono); font-size:0.52rem; color:var(--cyan);">GEOMEDZ.COM</span>
+                <span style="font-family:var(--font-mono); font-size:0.56rem; font-weight:700; color:var(--leica-green);">GEOMEDZ.COM</span>
               </div>
 
               <div class="bcard-verso-body">
@@ -276,7 +438,7 @@
               </div>
 
               <div class="bcard-verso-bottom">
-                <span>FIAT · SONATRACH · SONELGAZ · SHERATON · AZ HÔTELS</span>
+                <span>CHANTIERS EN COLLABORATION : INDUSTRIE, ÉNERGIE, INFRASTRUCTURES &amp; BTP</span>
                 <span>06 61 43 11 74</span>
               </div>
             </div>
@@ -288,7 +450,7 @@
     <div class="a4-multi-grid" id="a4-sheet-container"></div>
   </main>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=20261028-v4"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const studioCards = document.querySelectorAll('#studio-pair .business-card-sheet');

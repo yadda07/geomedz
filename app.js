@@ -776,9 +776,10 @@
     const applyFilter = (category) => {
       buttons.forEach((b) => b.classList.toggle('active', b.getAttribute('data-filter') === category));
       cards.forEach((card) => {
+        card.classList.remove('is-highlighted');
         const cat = card.getAttribute('data-category');
         const show = category === 'all' || cat === category;
-        card.classList.toggle('hidden', !show);
+        card.style.display = show ? 'flex' : 'none';
       });
     };
 
@@ -789,15 +790,18 @@
       });
     });
 
-    // Connect collaboration chips in Hero to filter and scroll to #references
+    // Connect collaboration chips in Hero to show all cards, highlight target card & scroll
     document.querySelectorAll('[data-collab-filter]').forEach((chip) => {
       chip.addEventListener('click', (e) => {
-        const cat = chip.getAttribute('data-collab-filter') || 'all';
-        applyFilter(cat);
-        const refSec = document.getElementById('references');
-        if (refSec) {
-          e.preventDefault();
-          refSec.scrollIntoView({ behavior: 'smooth' });
+        e.preventDefault();
+        const collabKey = chip.getAttribute('data-collab-filter') || '';
+        applyFilter('all');
+        const targetCard = document.querySelector(`.ref-card[data-collab="${collabKey}"]`);
+        if (targetCard) {
+          targetCard.classList.add('is-highlighted');
+          targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          document.getElementById('references')?.scrollIntoView({ behavior: 'smooth' });
         }
       });
     });
