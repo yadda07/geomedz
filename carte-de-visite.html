@@ -6,14 +6,16 @@
   <title>Carte de Visite (85x55 mm) · Cabinet GeoMed · Mohamed Amine Belarbia</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261028-v4">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20261029-v2">
   <style>
     body {
       padding-top: 0;
+      padding-bottom: 0;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      background: var(--bg-paper);
     }
 
     .print-toolbar {
@@ -36,21 +38,23 @@
 
     .studio-workspace {
       flex: 1;
-      padding: 2rem 0 4rem;
+      padding: 2.5rem 0 4rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 2rem;
+      justify-content: center;
+      gap: 2.2rem;
     }
 
     .crop-frame {
       position: relative;
-      padding: 12px;
+      padding: 14px;
       border: 1px dashed var(--border-strong);
       border-radius: 14px;
       background: var(--bg-card);
       max-width: 100%;
       width: 100%;
+      box-shadow: 0 12px 30px rgba(20, 26, 33, 0.05);
     }
 
     .crop-frame::before,
@@ -59,6 +63,7 @@
       position: absolute;
       font-family: var(--font-mono);
       font-size: 13px;
+      font-weight: 700;
       color: var(--btp-orange);
       line-height: 1;
     }
@@ -68,26 +73,28 @@
 
     .print-sheet-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
-      gap: 1.75rem;
-      width: min(1040px, 94vw);
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+      gap: 2rem;
+      width: min(1060px, 94dvw);
       justify-items: center;
     }
 
+    /* ==========================================================================
+       CARTE DE VISITE 85 x 55 MM · ARCHITECTURE PROPORTIONNELLE (FLUID CQI)
+       ========================================================================== */
     .business-card-sheet {
       position: relative;
       aspect-ratio: 85 / 55;
       width: 100%;
+      container-type: inline-size;
+      container-name: bcard;
       border-radius: 10px;
-      padding: clamp(1rem, 2.8vw, 1.45rem);
+      padding: 0;
       overflow: hidden;
-      background: #ffffff;
+      background: #faf9f5;
       color: var(--ink-primary);
-      border: 1px solid var(--border-strong);
+      border: 1px solid #c8c3b4;
       box-shadow: var(--shadow-card);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
     }
 
     .business-card-sheet.theme-ivory {
@@ -96,47 +103,73 @@
     }
 
     .business-card-sheet.theme-emerald {
-      background: #f0f9f6;
+      background: #f2f9f6;
       border-color: #0d7a5f;
     }
 
+    /* Filet d'ancrage latéral gauche (Mire topographique bicolore) */
+    .business-card-sheet::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 1cqi;
+      min-width: 3.5px;
+      background: linear-gradient(180deg, var(--btp-orange) 0%, var(--btp-orange) 30%, var(--leica-green) 30%, var(--leica-green) 100%);
+      z-index: 3;
+    }
+
+    /* Courbes de niveau & réticule géodésique en arrière-plan */
     .bcard-topo-svg {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       pointer-events: none;
-      opacity: 0.45;
+      opacity: 0.42;
+      z-index: 1;
     }
 
     .bcard-layer {
       position: relative;
       z-index: 2;
+      width: 100%;
       height: 100%;
+      padding: 5.8cqi 6.2cqi 5.4cqi 6.8cqi;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
+    /* --------------------------------------------------------------------------
+       RECTO · ARCHITECTURE EN 3 STRATES AÉRÉES
+       -------------------------------------------------------------------------- */
     .bcard-head {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 0.5rem;
+      gap: 2cqi;
     }
 
     .bcard-brand-row {
       display: flex;
       align-items: center;
-      gap: 0.55rem;
+      gap: 2.3cqi;
+    }
+
+    .bcard-logo-mark {
+      width: 8.6cqi;
+      height: 8.6cqi;
+      flex-shrink: 0;
     }
 
     .bcard-brand-word {
       font-weight: 800;
-      font-size: 1.15rem;
-      letter-spacing: -0.02em;
+      font-size: 4.4cqi;
+      letter-spacing: -0.025em;
       color: var(--ink-primary);
-      line-height: 1.05;
+      line-height: 1;
     }
 
     .bcard-brand-word span {
@@ -145,109 +178,281 @@
 
     .bcard-brand-sub {
       font-family: var(--font-mono);
-      font-size: 0.56rem;
+      font-size: 1.72cqi;
+      font-weight: 600;
       color: var(--ink-secondary);
-      letter-spacing: 0.05em;
-      margin-top: 0.1rem;
+      letter-spacing: 0.07em;
+      margin-top: 0.7cqi;
     }
 
-    .bcard-coord-stamp {
+    .bcard-origin-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 1.2cqi;
+      padding: 0.9cqi 2.1cqi;
+      border-radius: 999px;
+      background: rgba(13, 122, 95, 0.08);
+      border: 1px solid rgba(13, 122, 95, 0.24);
       font-family: var(--font-mono);
-      font-size: 0.55rem;
+      font-size: 1.68cqi;
       font-weight: 700;
-      color: var(--btp-orange);
-      text-align: right;
-      line-height: 1.35;
+      color: var(--leica-green);
+      letter-spacing: 0.05em;
+      white-space: nowrap;
     }
 
-    .bcard-identity-center {
-      margin-block: 0.35rem;
-      padding-left: 0.65rem;
-      border-left: 3px solid var(--leica-green);
+    .bcard-origin-dot {
+      width: 1.2cqi;
+      height: 1.2cqi;
+      border-radius: 50%;
+      background: var(--btp-orange);
+    }
+
+    /* Bloc Central : Identité & Direction (Aéré et Hiérarchisé) */
+    .bcard-identity-focal {
+      padding-left: 2.8cqi;
+      border-left: 0.55cqi solid var(--leica-green);
+      margin-block: auto;
     }
 
     .bcard-person-name {
-      font-size: 1.12rem;
+      font-size: 4.85cqi;
       font-weight: 800;
+      letter-spacing: -0.025em;
       color: var(--ink-primary);
+      line-height: 1.08;
     }
 
     .bcard-person-role {
-      font-family: var(--font-mono);
-      font-size: 0.66rem;
+      font-size: 2.38cqi;
       font-weight: 700;
       color: var(--btp-orange);
-      margin-top: 0.1rem;
+      margin-top: 0.85cqi;
+      letter-spacing: -0.005em;
     }
 
-    .bcard-footer-contacts {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.25rem 0.6rem;
-      padding-top: 0.5rem;
-      border-top: 1px solid var(--border-light);
+    .bcard-person-creds {
+      display: inline-flex;
+      align-items: center;
+      gap: 1.4cqi;
       font-family: var(--font-mono);
-      font-size: 0.64rem;
+      font-size: 1.72cqi;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      letter-spacing: 0.04em;
+      margin-top: 1.35cqi;
     }
 
-    .bcard-c-line {
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-
-    .bcard-c-line.full-span {
-      grid-column: span 2;
-    }
-
-    .bcard-verso-body {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.75rem;
-      margin-block: 0.35rem;
-    }
-
-    .bcard-domains-grid {
+    /* Pied de Carte : Grille 3 Colonnes Sans Retour à la Ligne */
+    .bcard-contact-strip {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.3rem;
-      flex: 1;
+      grid-template-columns: 1.02fr 1.34fr 0.96fr;
+      gap: 2.2cqi;
+      padding-top: 2.6cqi;
+      border-top: 1px solid rgba(20, 26, 33, 0.14);
     }
 
-    .bcard-domain-item {
-      background: var(--bg-paper);
-      border: 1px solid var(--border-light);
-      border-left: 2px solid var(--leica-green);
-      padding: 0.24rem 0.45rem;
-      border-radius: 4px;
-      font-size: 0.66rem;
+    .bcard-contact-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55cqi;
+      min-width: 0;
+    }
+
+    .bcard-contact-col:not(:last-child) {
+      border-right: 1px solid rgba(20, 26, 33, 0.1);
+      padding-right: 1.8cqi;
+    }
+
+    .bcard-col-label {
+      font-family: var(--font-mono);
+      font-size: 1.5cqi;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--leica-green);
+      text-transform: uppercase;
+    }
+
+    .bcard-col-label.orange {
+      color: var(--btp-orange);
+    }
+
+    .bcard-col-primary {
+      font-family: var(--font-mono);
+      font-size: 2.02cqi;
       font-weight: 700;
       color: var(--ink-primary);
+      white-space: nowrap;
+      line-height: 1.25;
     }
 
-    .bcard-qr-box {
-      width: 78px;
-      height: 78px;
-      flex-shrink: 0;
-      background: #ffffff;
-      border: 1px solid var(--border-strong);
-      border-radius: 6px;
-      padding: 4px;
-    }
-
-    .bcard-verso-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 0.45rem;
-      border-top: 1px solid var(--border-light);
+    .bcard-col-secondary {
       font-family: var(--font-mono);
-      font-size: 0.56rem;
+      font-size: 1.84cqi;
+      font-weight: 500;
+      color: var(--ink-secondary);
+      white-space: nowrap;
+      line-height: 1.25;
+    }
+
+    /* --------------------------------------------------------------------------
+       VERSO · ARCHITECTURE ASYMÉTRIQUE (INDEX 6 PÔLES + CARTOUCHE QR)
+       -------------------------------------------------------------------------- */
+    .bcard-verso-layout {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      padding: 5.8cqi 5.8cqi 5.4cqi 6.8cqi;
+      display: grid;
+      grid-template-columns: 1fr 24cqi;
+      gap: 3.4cqi;
+      align-items: stretch;
+    }
+
+    .bcard-verso-main {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-width: 0;
+    }
+
+    .bcard-verso-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5cqi;
+      padding-bottom: 2.2cqi;
+      border-bottom: 1px solid rgba(20, 26, 33, 0.12);
+    }
+
+    .bcard-verso-title {
+      font-weight: 800;
+      font-size: 3.8cqi;
+      letter-spacing: -0.02em;
+      color: var(--ink-primary);
+      line-height: 1;
+    }
+
+    .bcard-verso-title span {
+      color: var(--leica-green);
+    }
+
+    .bcard-verso-tag {
+      font-family: var(--font-mono);
+      font-size: 1.62cqi;
       font-weight: 700;
+      color: var(--btp-orange);
+      letter-spacing: 0.06em;
+    }
+
+    /* Index Typographique des 6 Pôles (Sans boîtes lourdes) */
+    .bcard-poles-index {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.2cqi 3cqi;
+      margin-block: auto;
+    }
+
+    .bcard-pole-row {
+      display: flex;
+      align-items: baseline;
+      gap: 1.4cqi;
+      padding-bottom: 1.4cqi;
+      border-bottom: 1px solid rgba(20, 26, 33, 0.09);
+    }
+
+    .bcard-pole-num {
+      font-family: var(--font-mono);
+      font-size: 1.75cqi;
+      font-weight: 700;
+      color: var(--leica-green);
+      flex-shrink: 0;
+    }
+
+    .bcard-pole-row:nth-child(odd) .bcard-pole-num {
+      color: var(--btp-orange);
+    }
+
+    .bcard-pole-name {
+      font-size: 2.18cqi;
+      font-weight: 700;
+      color: var(--ink-primary);
+      white-space: nowrap;
+      line-height: 1.15;
+    }
+
+    .bcard-verso-foot {
+      padding-top: 2cqi;
+      border-top: 1px solid rgba(20, 26, 33, 0.12);
+      display: flex;
+      flex-direction: column;
+      gap: 0.55cqi;
+    }
+
+    .bcard-verso-foot-label {
+      font-family: var(--font-mono);
+      font-size: 1.52cqi;
+      font-weight: 700;
+      color: var(--leica-green);
+      letter-spacing: 0.07em;
+      white-space: nowrap;
+    }
+
+    .bcard-verso-wilayas {
+      font-family: var(--font-mono);
+      font-size: 1.82cqi;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      white-space: nowrap;
+    }
+
+    /* Cartouche Géodésique QR (Colonne Droite Dédiée) */
+    .bcard-qr-cartouche {
+      border-left: 1px dashed var(--border-strong);
+      padding-left: 3.2cqi;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+    }
+
+    .bcard-qr-label {
+      font-family: var(--font-mono);
+      font-size: 1.58cqi;
+      font-weight: 700;
+      letter-spacing: 0.08em;
       color: var(--ink-secondary);
     }
 
+    .bcard-qr-box {
+      width: 20.5cqi;
+      height: 20.5cqi;
+      background: #ffffff;
+      border: 1px solid var(--border-strong);
+      border-radius: 5px;
+      padding: 1.2cqi;
+      box-shadow: 0 3px 10px rgba(20, 26, 33, 0.05);
+    }
+
+    .bcard-qr-box svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .bcard-qr-domain {
+      font-family: var(--font-mono);
+      font-size: 1.82cqi;
+      font-weight: 700;
+      color: var(--leica-green);
+      letter-spacing: 0.03em;
+    }
+
+    /* --------------------------------------------------------------------------
+       PLANCHE D'IMPRESSION A4 (8 CARTES 85 x 55 MM)
+       -------------------------------------------------------------------------- */
     .a4-multi-grid {
       display: none;
       grid-template-columns: repeat(2, 85mm);
@@ -263,20 +468,9 @@
       width: 85mm;
       height: 55mm;
       border-radius: 0;
-      padding: 4.2mm 4.8mm;
       box-shadow: none;
       border: 0.25mm solid #94a3b8;
     }
-
-    .a4-multi-grid .bcard-person-name { font-size: 10pt; }
-    .a4-multi-grid .bcard-person-role { font-size: 5.8pt; }
-    .a4-multi-grid .bcard-footer-contacts { font-size: 5.5pt; }
-    .a4-multi-grid .bcard-brand-word { font-size: 11.5pt; }
-    .a4-multi-grid .bcard-brand-sub { font-size: 4.2pt; }
-    .a4-multi-grid .bcard-coord-stamp { font-size: 4.5pt; }
-    .a4-multi-grid .bcard-qr-box { width: 58px; height: 58px; padding: 3px; }
-    .a4-multi-grid .bcard-domain-item { font-size: 5.2pt; padding: 2px 4px; }
-    .a4-multi-grid .bcard-verso-bottom { font-size: 4.8pt; }
 
     body.mode-a4 .print-sheet-grid { display: none; }
     body.mode-a4 .a4-multi-grid { display: grid; }
@@ -311,18 +505,29 @@
         width: auto !important;
       }
 
+      body.mode-a4 .print-sheet-grid {
+        display: none !important;
+      }
+
+      body.mode-a4 .a4-multi-grid {
+        display: grid !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+
       .crop-frame {
         padding: 0 !important;
         border: 0.2mm dashed #64748b !important;
         border-radius: 0 !important;
         background: transparent !important;
+        box-shadow: none !important;
       }
 
       .business-card-sheet {
         width: 85mm !important;
         height: 55mm !important;
         border-radius: 0 !important;
-        padding: 4.2mm 4.8mm !important;
         box-shadow: none !important;
       }
     }
@@ -335,12 +540,11 @@
       <div>
         <strong style="font-size:1.02rem; font-weight:800;">Planche Carte de Visite (85 x 55 mm) · Cabinet GeoMed</strong>
         <span style="display:block; font-family:var(--font-mono); font-size:0.68rem; color:var(--leica-green); font-weight:700;">
-          MOHAMED AMINE BELARBIA · 16 ANS D'EXPÉRIENCE · 2 BRIGADES · 5 TOPOGRAPHES
+          MOHAMED AMINE BELARBIA · IMPRESSION HAUTE PRÉCISION 300 DPI
         </span>
       </div>
 
       <div style="display:flex; flex-wrap:wrap; gap:0.45rem; align-items:center;">
-        <a href="index.html" class="btn btn-outline">← Retour au site</a>
         <button type="button" id="btn-mode-hd" class="filter-btn active">Recto / Verso HD</button>
         <button type="button" id="btn-mode-a4" class="filter-btn">Planche A4 (8 Cartes)</button>
         <button type="button" class="filter-btn active" data-bcard-theme="ivory">01. Papier Cadastral</button>
@@ -354,51 +558,70 @@
 
   <main class="studio-workspace">
     <div class="print-sheet-grid" id="studio-pair">
+      <!-- ==================== RECTO ==================== -->
       <div style="width:100%;">
-        <div class="meta-code no-print" style="text-align:center; margin-bottom:0.5rem;">RECTO · 85 x 55 MM</div>
+        <div class="meta-code no-print" style="text-align:center; margin-bottom:0.55rem;">RECTO · 85 x 55 MM (IDENTITÉ &amp; CONTACT DIRECT)</div>
         <div class="crop-frame">
           <article class="business-card-sheet theme-ivory">
-            <svg class="bcard-topo-svg" viewBox="0 0 420 270" fill="none" aria-hidden="true">
-              <path d="M240,-20 C310,40 320,160 440,220" stroke="#C84B28" stroke-width="0.9"/>
-              <path d="M270,-30 C340,35 350,145 450,200" stroke="#0D7A5F" stroke-width="1"/>
-              <circle cx="355" cy="95" r="52" stroke="#0D7A5F" stroke-width="0.7" stroke-dasharray="3 3"/>
+            <svg class="bcard-topo-svg" viewBox="0 0 425 275" fill="none" aria-hidden="true">
+              <!-- Courbes de niveau topographiques fluides -->
+              <path d="M265,-20 C325,45 340,155 445,210" stroke="#C84B28" stroke-width="0.85"/>
+              <path d="M295,-25 C355,40 370,140 455,190" stroke="#0D7A5F" stroke-width="0.95"/>
+              <path d="M325,-30 C380,35 395,125 465,170" stroke="#0D7A5F" stroke-width="0.6" stroke-dasharray="2 3"/>
+              <!-- Réticule géodésique discret en haut à droite -->
+              <circle cx="368" cy="82" r="42" stroke="#0D7A5F" stroke-width="0.65" stroke-dasharray="3 3"/>
+              <circle cx="368" cy="82" r="18" stroke="#C84B28" stroke-width="0.55" opacity="0.6"/>
+              <line x1="362" y1="82" x2="374" y2="82" stroke="#C84B28" stroke-width="0.7"/>
+              <line x1="368" y1="76" x2="368" y2="88" stroke="#C84B28" stroke-width="0.7"/>
             </svg>
 
             <div class="bcard-layer">
+              <!-- Strate 1 : En-tête Marque & Ancrage -->
               <div class="bcard-head">
                 <div class="bcard-brand-row">
-                  <svg width="34" height="34" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                  <svg class="bcard-logo-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
                     <rect x="4" y="4" width="56" height="56" rx="12" fill="#FFFFFF" stroke="#0D7A5F" stroke-width="2.2"/>
+                    <circle cx="32" cy="32" r="19" stroke="#0D7A5F" stroke-width="1.2" stroke-dasharray="3 3"/>
                     <polygon points="32,13 48,22 48,42 32,51 16,42 16,22" stroke="#141A21" stroke-width="1.6" fill="#EEF8F5"/>
                     <circle cx="32" cy="32" r="4.5" fill="#C84B28"/>
                   </svg>
                   <div>
                     <div class="bcard-brand-word">GEO<span>MED</span></div>
-                    <div class="bcard-brand-sub">LIDAR 3D · GNSS · TOPOGRAPHIE</div>
+                    <div class="bcard-brand-sub">GÉODÉSIE · LIDAR 3D · TOPOGRAPHIE</div>
                   </div>
                 </div>
-                <div class="bcard-coord-stamp">
-                  16 ANS D'EXPÉRIENCE<br>2 BRIGADES · 5 TOPOGRAPHES
-                </div>
+
+                <span class="bcard-origin-pill">
+                  <i class="bcard-origin-dot" aria-hidden="true"></i>
+                  <span>ORAN · ALGÉRIE</span>
+                </span>
               </div>
 
-              <div class="bcard-identity-center">
-                <div class="bcard-person-name">Belarbia Mohamed Amine</div>
+              <!-- Strate 2 : Cœur Identitaire Aéré -->
+              <div class="bcard-identity-focal">
+                <div class="bcard-person-name">Mohamed Amine Belarbia</div>
                 <div class="bcard-person-role">Directeur &amp; Manager Grands Projets Topographiques</div>
+                <div class="bcard-person-creds">16 ANS D'EXPÉRIENCE · 2 BRIGADES · 5 TOPOGRAPHES</div>
               </div>
 
-              <div class="bcard-footer-contacts">
-                <div class="bcard-c-line">
-                  <strong style="color:var(--btp-orange);">TEL</strong>
-                  <span>06 61 43 11 74 / 05 58 42 62 57</span>
+              <!-- Strate 3 : Pied de Carte Architecturé en 3 Colonnes -->
+              <div class="bcard-contact-strip">
+                <div class="bcard-contact-col">
+                  <span class="bcard-col-label orange">Téléphone</span>
+                  <span class="bcard-col-primary">06 61 43 11 74</span>
+                  <span class="bcard-col-secondary">05 58 42 62 57</span>
                 </div>
-                <div class="bcard-c-line">
-                  <strong style="color:var(--leica-green);">WEB</strong>
-                  <span>geomedz.com · belarbia.85@gmail.com</span>
+
+                <div class="bcard-contact-col">
+                  <span class="bcard-col-label">Digital &amp; Web</span>
+                  <span class="bcard-col-primary">belarbia.85@gmail.com</span>
+                  <span class="bcard-col-secondary">www.geomedz.com</span>
                 </div>
-                <div class="bcard-c-line full-span">
-                  <strong style="color:var(--leica-green);">SIÈGE</strong>
-                  <span>Haï Akid Lotfi · 31000 Oran, Algérie (WGS84 : 35.7243°N, 0.5911°W)</span>
+
+                <div class="bcard-contact-col">
+                  <span class="bcard-col-label orange">Siège Social</span>
+                  <span class="bcard-col-primary">Haï Akid Lotfi</span>
+                  <span class="bcard-col-secondary">31000 Oran, Algérie</span>
                 </div>
               </div>
             </div>
@@ -406,40 +629,63 @@
         </div>
       </div>
 
+      <!-- ==================== VERSO ==================== -->
       <div style="width:100%;">
-        <div class="meta-code no-print" style="text-align:center; margin-bottom:0.5rem;">VERSO · 85 x 55 MM</div>
+        <div class="meta-code no-print" style="text-align:center; margin-bottom:0.55rem;">VERSO · 85 x 55 MM (PÔLES D'EXPERTISE &amp; CARTOUCHE QR)</div>
         <div class="crop-frame">
           <article class="business-card-sheet theme-ivory">
-            <svg class="bcard-topo-svg" viewBox="0 0 420 270" fill="none" aria-hidden="true">
-              <path d="M-20,60 C80,110 140,210 260,290" stroke="#0D7A5F" stroke-width="0.9"/>
-              <path d="M-30,100 C70,150 120,230 230,300" stroke="#C84B28" stroke-width="0.9"/>
+            <svg class="bcard-topo-svg" viewBox="0 0 425 275" fill="none" aria-hidden="true">
+              <path d="M-20,65 C75,115 135,205 245,285" stroke="#0D7A5F" stroke-width="0.85"/>
+              <path d="M-30,105 C65,155 115,225 215,295" stroke="#C84B28" stroke-width="0.85"/>
+              <circle cx="58" cy="215" r="34" stroke="#0D7A5F" stroke-width="0.6" stroke-dasharray="3 3"/>
             </svg>
 
-            <div class="bcard-layer">
-              <div class="bcard-head">
-                <div>
-                  <div class="bcard-brand-word" style="font-size:1.02rem;">GEO<span>MED</span> · ALGÉRIE</div>
-                  <div class="bcard-brand-sub">ORAN · ALGER · BLIDA · TLEMCEN · TIARET · SUD ALGÉRIEN</div>
-                </div>
-                <span style="font-family:var(--font-mono); font-size:0.56rem; font-weight:700; color:var(--leica-green);">GEOMEDZ.COM</span>
-              </div>
-
-              <div class="bcard-verso-body">
-                <div class="bcard-domains-grid">
-                  <div class="bcard-domain-item"><span>Bornage &amp; Foncier</span></div>
-                  <div class="bcard-domain-item"><span>LiDAR 3D &amp; GNSS</span></div>
-                  <div class="bcard-domain-item"><span>Travaux Topographiques</span></div>
-                  <div class="bcard-domain-item"><span>EDD Copropriété</span></div>
-                  <div class="bcard-domain-item"><span>Morcellement &amp; Lots</span></div>
-                  <div class="bcard-domain-item"><span>Études &amp; Suivis VRD</span></div>
+            <div class="bcard-verso-layout">
+              <!-- Zone Gauche : 6 Pôles & Couverture Nationale -->
+              <div class="bcard-verso-main">
+                <div class="bcard-verso-head">
+                  <div class="bcard-verso-title">GEO<span>MED</span></div>
+                  <span class="bcard-verso-tag">PÔLES D'EXPERTISE</span>
                 </div>
 
-                <div class="bcard-qr-box js-geomed-qr"></div>
+                <div class="bcard-poles-index">
+                  <div class="bcard-pole-row">
+                    <span class="bcard-pole-num">01</span>
+                    <span class="bcard-pole-name">Bornage &amp; Foncier</span>
+                  </div>
+                  <div class="bcard-pole-row">
+                    <span class="bcard-pole-num">02</span>
+                    <span class="bcard-pole-name">LiDAR 3D &amp; GNSS</span>
+                  </div>
+                  <div class="bcard-pole-row">
+                    <span class="bcard-pole-num">03</span>
+                    <span class="bcard-pole-name">Implantation BTP</span>
+                  </div>
+                  <div class="bcard-pole-row">
+                    <span class="bcard-pole-num">04</span>
+                    <span class="bcard-pole-name">EDD Copropriété</span>
+                  </div>
+                  <div class="bcard-pole-row">
+                    <span class="bcard-pole-num">05</span>
+                    <span class="bcard-pole-name">Morcellement &amp; Lots</span>
+                  </div>
+                  <div class="bcard-pole-row">
+                    <span class="bcard-pole-num">06</span>
+                    <span class="bcard-pole-name">Études &amp; Suivis VRD</span>
+                  </div>
+                </div>
+
+                <div class="bcard-verso-foot">
+                  <span class="bcard-verso-foot-label">RAYONNEMENT NATIONAL · GRANDS PROJETS</span>
+                  <span class="bcard-verso-wilayas">Oran · Alger · Blida · Tlemcen · Tiaret · Sud</span>
+                </div>
               </div>
 
-              <div class="bcard-verso-bottom">
-                <span>CHANTIERS EN COLLABORATION : INDUSTRIE, ÉNERGIE, INFRASTRUCTURES &amp; BTP</span>
-                <span>06 61 43 11 74</span>
+              <!-- Zone Droite : Cartouche Géodésique QR -->
+              <div class="bcard-qr-cartouche">
+                <span class="bcard-qr-label">SCAN VCARD</span>
+                <div class="bcard-qr-box js-geomed-qr" aria-label="QR Code vCard Mohamed Amine Belarbia"></div>
+                <span class="bcard-qr-domain">geomedz.com</span>
               </div>
             </div>
           </article>
@@ -450,7 +696,7 @@
     <div class="a4-multi-grid" id="a4-sheet-container"></div>
   </main>
 
-  <script src="app.js?v=20261028-v4"></script>
+  <script src="app.js?v=20261029-v2"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const studioCards = document.querySelectorAll('#studio-pair .business-card-sheet');
